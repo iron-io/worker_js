@@ -19,7 +19,7 @@ Gets a job by id.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.CoreApi()
 
@@ -65,7 +65,7 @@ Gets the next job in the queue, ready for processing.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.CoreApi()
 
@@ -112,7 +112,7 @@ Enqueues a job.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.CoreApi()
 

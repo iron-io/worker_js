@@ -1,5 +1,5 @@
 {
-  "name": "IronTitan",
+  "name": "iron_titan",
   "version": "0.1.1",
   "description": "The ultimate, language agnostic, container based job processing framework.",
   "main": "src/index.js",

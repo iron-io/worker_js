@@ -24,7 +24,7 @@ This will prevent a job from running. TODO: should we attempt to kill a running 
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.JobsApi()
 
@@ -70,7 +70,7 @@ Gets a job by id.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.JobsApi()
 
@@ -116,7 +116,7 @@ Retrieves the log from log storage.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.JobsApi()
 
@@ -162,7 +162,7 @@ Typically used to update status on error/completion. TODO: only allow &#39;statu
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.JobsApi()
 
@@ -211,7 +211,7 @@ If a job fails, you can retry the job with the original payload.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.JobsApi()
 
@@ -257,7 +257,7 @@ Gets the next job in the queue, ready for processing.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.JobsApi()
 
@@ -304,7 +304,7 @@ Gets the next job in the queue, ready for processing.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.JobsApi()
 
@@ -356,7 +356,7 @@ Enqueues a job.
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.JobsApi()
 

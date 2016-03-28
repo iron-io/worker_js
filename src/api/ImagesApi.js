@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ImagesWrapper'), require('../model/Error'), require('../model/ImageWrapper'));
   } else {
     // Browser globals (root is window)
-    if (!root.TitanApi) {
-      root.TitanApi = {};
+    if (!root.IronTitan) {
+      root.IronTitan = {};
     }
-    root.TitanApi.ImagesApi = factory(root.TitanApi.ApiClient, root.TitanApi.ImagesWrapper, root.TitanApi.Error, root.TitanApi.ImageWrapper);
+    root.IronTitan.ImagesApi = factory(root.IronTitan.ApiClient, root.IronTitan.ImagesWrapper, root.IronTitan.Error, root.IronTitan.ImageWrapper);
   }
 }(this, function(ApiClient, ImagesWrapper, Error, ImageWrapper) {
   'use strict';

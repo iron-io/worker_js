@@ -18,7 +18,7 @@ TODO: Using images for lack of a better term. See https://github.com/iron-io/tit
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.ImagesApi()
 
@@ -58,7 +58,7 @@ NOT IMPLEMENTED YET. This gives more details about on image, such as statistics 
 
 ### Example
 ```javascript
-var IronTitan = require('IronTitan');
+var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.ImagesApi()
 

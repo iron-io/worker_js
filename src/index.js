@@ -1,10 +1,10 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['./ApiClient', './model/Error', './model/ErrorBody', './model/Image', './model/ImageWrapper', './model/ImagesWrapper', './model/Job', './model/JobWrapper', './model/JobsWrapper', './model/Log', './model/NewJob', './model/NewJobsWrapper', './iron_titan/CoreApi', './iron_titan/ImagesApi', './iron_titan/JobsApi'], factory);
+    define(['./ApiClient', './model/Error', './model/ErrorBody', './model/Image', './model/ImageWrapper', './model/ImagesWrapper', './model/Job', './model/JobWrapper', './model/JobsWrapper', './model/Log', './model/NewJob', './model/NewJobsWrapper', './api/CoreApi', './api/ImagesApi', './api/JobsApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Error'), require('./model/ErrorBody'), require('./model/Image'), require('./model/ImageWrapper'), require('./model/ImagesWrapper'), require('./model/Job'), require('./model/JobWrapper'), require('./model/JobsWrapper'), require('./model/Log'), require('./model/NewJob'), require('./model/NewJobsWrapper'), require('./iron_titan/CoreApi'), require('./iron_titan/ImagesApi'), require('./iron_titan/JobsApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Error'), require('./model/ErrorBody'), require('./model/Image'), require('./model/ImageWrapper'), require('./model/ImagesWrapper'), require('./model/Job'), require('./model/JobWrapper'), require('./model/JobsWrapper'), require('./model/Log'), require('./model/NewJob'), require('./model/NewJobsWrapper'), require('./api/CoreApi'), require('./api/ImagesApi'), require('./api/JobsApi'));
   }
 }(function(ApiClient, Error, ErrorBody, Image, ImageWrapper, ImagesWrapper, Job, JobWrapper, JobsWrapper, Log, NewJob, NewJobsWrapper, CoreApi, ImagesApi, JobsApi) {
   'use strict';
@@ -103,17 +103,17 @@
     NewJobsWrapper: NewJobsWrapper,
     /**
      * The CoreApi service constructor.
-     * @property {module:iron_titan/CoreApi}
+     * @property {module:api/CoreApi}
      */
     CoreApi: CoreApi,
     /**
      * The ImagesApi service constructor.
-     * @property {module:iron_titan/ImagesApi}
+     * @property {module:api/ImagesApi}
      */
     ImagesApi: ImagesApi,
     /**
      * The JobsApi service constructor.
-     * @property {module:iron_titan/JobsApi}
+     * @property {module:api/JobsApi}
      */
     JobsApi: JobsApi
   };
