@@ -1,4 +1,4 @@
-# TitanApi.ImagesApi
+# IronTitan.ImagesApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -18,9 +18,9 @@ TODO: Using images for lack of a better term. See https://github.com/iron-io/tit
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.ImagesApi()
+var apiInstance = new IronTitan.ImagesApi()
 
 var callback = function(error, data, response) {
   if (error) {
@@ -58,9 +58,9 @@ NOT IMPLEMENTED YET. This gives more details about on image, such as statistics 
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.ImagesApi()
+var apiInstance = new IronTitan.ImagesApi()
 
 var name = "name_example"; // {String} Name of the image.
 

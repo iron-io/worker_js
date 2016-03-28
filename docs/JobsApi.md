@@ -1,4 +1,4 @@
-# TitanApi.JobsApi
+# IronTitan.JobsApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -24,9 +24,9 @@ This will prevent a job from running. TODO: should we attempt to kill a running 
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.JobsApi()
+var apiInstance = new IronTitan.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -70,9 +70,9 @@ Gets a job by id.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.JobsApi()
+var apiInstance = new IronTitan.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -116,9 +116,9 @@ Retrieves the log from log storage.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.JobsApi()
+var apiInstance = new IronTitan.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -162,13 +162,13 @@ Typically used to update status on error/completion. TODO: only allow &#39;statu
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.JobsApi()
+var apiInstance = new IronTitan.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
-var body = new TitanApi.JobWrapper(); // {JobWrapper} Job data to post
+var body = new IronTitan.JobWrapper(); // {JobWrapper} Job data to post
 
 
 var callback = function(error, data, response) {
@@ -211,9 +211,9 @@ If a job fails, you can retry the job with the original payload.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.JobsApi()
+var apiInstance = new IronTitan.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -257,9 +257,9 @@ Gets the next job in the queue, ready for processing.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.JobsApi()
+var apiInstance = new IronTitan.JobsApi()
 
 var opts = { 
   'n': 56 // {Integer} Number of jobs to return.
@@ -304,9 +304,9 @@ Gets the next job in the queue, ready for processing.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.JobsApi()
+var apiInstance = new IronTitan.JobsApi()
 
 var name = "name_example"; // {String} Name of this set of jobs.
 
@@ -356,11 +356,11 @@ Enqueues a job.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.JobsApi()
+var apiInstance = new IronTitan.JobsApi()
 
-var body = new TitanApi.NewJobsWrapper(); // {NewJobsWrapper} Array of jobs to post.
+var body = new IronTitan.NewJobsWrapper(); // {NewJobsWrapper} Array of jobs to post.
 
 
 var callback = function(error, data, response) {

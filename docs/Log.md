@@ -1,4 +1,4 @@
-# TitanApi.Log
+# IronTitan.Log
 
 ## Properties
 Name | Type | Description | Notes

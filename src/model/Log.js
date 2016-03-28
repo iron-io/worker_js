@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.TitanApi) {
-      root.TitanApi = {};
+    if (!root.IronTitan) {
+      root.IronTitan = {};
     }
-    root.TitanApi.Log = factory(root.TitanApi.ApiClient);
+    root.IronTitan.Log = factory(root.IronTitan.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';

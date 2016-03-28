@@ -1,4 +1,4 @@
-# TitanApi.JobWrapper
+# IronTitan.JobWrapper
 
 ## Properties
 Name | Type | Description | Notes

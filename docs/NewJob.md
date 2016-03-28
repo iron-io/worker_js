@@ -1,4 +1,4 @@
-# TitanApi.NewJob
+# IronTitan.NewJob
 
 ## Properties
 Name | Type | Description | Notes

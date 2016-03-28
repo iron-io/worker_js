@@ -1,4 +1,4 @@
-# TitanApi.CoreApi
+# IronTitan.CoreApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -19,9 +19,9 @@ Gets a job by id.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.CoreApi()
+var apiInstance = new IronTitan.CoreApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -65,9 +65,9 @@ Gets the next job in the queue, ready for processing.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.CoreApi()
+var apiInstance = new IronTitan.CoreApi()
 
 var opts = { 
   'n': 56 // {Integer} Number of jobs to return.
@@ -112,11 +112,11 @@ Enqueues a job.
 
 ### Example
 ```javascript
-var TitanApi = require('titan-api');
+var IronTitan = require('IronTitan');
 
-var apiInstance = new TitanApi.CoreApi()
+var apiInstance = new IronTitan.CoreApi()
 
-var body = new TitanApi.NewJobsWrapper(); // {NewJobsWrapper} Array of jobs to post.
+var body = new IronTitan.NewJobsWrapper(); // {NewJobsWrapper} Array of jobs to post.
 
 
 var callback = function(error, data, response) {

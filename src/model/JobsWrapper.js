@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('./Job'));
   } else {
     // Browser globals (root is window)
-    if (!root.TitanApi) {
-      root.TitanApi = {};
+    if (!root.IronTitan) {
+      root.IronTitan = {};
     }
-    root.TitanApi.JobsWrapper = factory(root.TitanApi.ApiClient, root.TitanApi.Job);
+    root.IronTitan.JobsWrapper = factory(root.IronTitan.ApiClient, root.IronTitan.Job);
   }
 }(this, function(ApiClient, Job) {
   'use strict';
