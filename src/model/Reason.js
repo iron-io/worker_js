@@ -10,59 +10,42 @@
     if (!root.IronTitan) {
       root.IronTitan = {};
     }
-    root.IronTitan.ErrorBody = factory(root.IronTitan.ApiClient);
+    root.IronTitan.Reason = factory(root.IronTitan.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
 
   /**
-   * The ErrorBody model module.
-   * @module model/ErrorBody
+   * The Reason model module.
+   * @module model/Reason
    * @version 0.2.0
    */
 
   /**
-   * Constructs a new <code>ErrorBody</code>.
-   * @alias module:model/ErrorBody
+   * Constructs a new <code>Reason</code>.
+   * Machine usable reason for job being in this state. See `details` for more information (if any).\n\nValid values for error status are `timeout | killed | bad_exit`.\nValid values for cancelled status are `client_request`.\nFor everything else, this is undefined.
+   * @alias module:model/Reason
    * @class
    */
   var exports = function() {
 
-
-
   };
 
   /**
-   * Constructs a <code>ErrorBody</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Reason</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/ErrorBody} obj Optional instance to populate.
-   * @return {module:model/ErrorBody} The populated <code>ErrorBody</code> instance.
+   * @param {module:model/Reason} obj Optional instance to populate.
+   * @return {module:model/Reason} The populated <code>Reason</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) { 
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('message')) {
-        obj['message'] = ApiClient.convertToType(data['message'], 'String');
-      }
-      if (data.hasOwnProperty('fields')) {
-        obj['fields'] = ApiClient.convertToType(data['fields'], 'String');
-      }
     }
     return obj;
   }
 
-
-  /**
-   * @member {String} message
-   */
-  exports.prototype['message'] = undefined;
-
-  /**
-   * @member {String} fields
-   */
-  exports.prototype['fields'] = undefined;
 
 
 

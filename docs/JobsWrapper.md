@@ -4,5 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **jobs** | [**[Job]**](Job.md) |  | 
+**error** | [**ErrorBody**](ErrorBody.md) |  | [optional] 
 
 

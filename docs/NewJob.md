@@ -3,14 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | Docker image to use for job. Default is the same as the &#39;image&#39; parameter. | [optional] 
-**image** | **String** | Docker image to use for job. | 
-**payload** | **String** | Payload for the job.  This is what you pass into each job to make it do something. | [optional] 
-**delay** | **Integer** | Number of seconds to wait before starting. Default 0. | [optional] 
-**timeout** | **Integer** | Maximum runtime in seconds. If job runs for longer, it will be killed. Default 60 seconds. | [optional] 
-**priority** | **Integer** | Priority of the job. 3 levels from 0-2. Default 0. | [optional] 
-**retries** | **Integer** | Max number of retries. A retry will be attempted if a task fails. Default 3. TODO: naming: retries or max_retries? | [optional] 
-**retriesDelay** | **Integer** | Time in seconds to wait before next attempt. Default 60. | [optional] 
-**retryFromId** | **String** | If this field is set, then this job is a retry of a previous job. retry_from_id points to the previous job. | [optional] 
+**payload** | **String** | Payload for the job. This is what you pass into each job to make it do something. | [optional] 
+**delay** | **Integer** | Number of seconds to wait before queueing the job for consumption for the first time. Must be a positive integer. Jobs with a delay start in state \&quot;delayed\&quot; and transition to \&quot;running\&quot; after delay seconds. | [optional] [default to 0]
+**timeout** | **Integer** | Maximum runtime in seconds. If a consumer retrieves the job, but does not change it&#39;s status within timeout seconds, the job is considered failed, with reason timeout (Titan may allow a small grace period). The consumer should also kill the job after timeout seconds. If a consumer tries to change status after Titan has already timed out the job, the consumer will be ignored. | [optional] [default to 60]
+**priority** | **Integer** | Priority of the job. Higher has more priority. 3 levels from 0-2. Jobs at same priority are processed in FIFO order. | [optional] [default to 0]
+**maxRetries** | **Integer** | Number of automatic retries this job is allowed. A retry will be attempted if a task fails. Max 25.\nAutomatic retries are performed by titan when a task reaches a failed state and has `max_retries` &gt; 0. A retry is performed by queueing a new job with the same image id and payload. The new job&#39;s max_retries is one less than the original. The new job&#39;s `retry_of` field is set to the original Job ID.  Titan will delay the new job for retries_delay seconds before queueing it. Cancelled or successful tasks are never automatically retried. | [optional] [default to 3]
+**retriesDelay** | **Integer** | Time in seconds to wait before retrying the job. Must be a non-negative integer. | [optional] [default to 60]
 
 

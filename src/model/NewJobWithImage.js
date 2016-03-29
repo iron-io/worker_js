@@ -1,60 +1,60 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient'], factory);
+    define(['../ApiClient', './Image', './NewJob'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./Image'), require('./NewJob'));
   } else {
     // Browser globals (root is window)
     if (!root.IronTitan) {
       root.IronTitan = {};
     }
-    root.IronTitan.Image = factory(root.IronTitan.ApiClient);
+    root.IronTitan.NewJobWithImage = factory(root.IronTitan.ApiClient, root.IronTitan.Image, root.IronTitan.NewJob);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, Image, NewJob) {
   'use strict';
 
   /**
-   * The Image model module.
-   * @module model/Image
+   * The NewJobWithImage model module.
+   * @module model/NewJobWithImage
    * @version 0.2.0
    */
 
   /**
-   * Constructs a new <code>Image</code>.
-   * @alias module:model/Image
+   * Constructs a new <code>NewJobWithImage</code>.
+   * @alias module:model/NewJobWithImage
    * @class
+   * @extends module:model/NewJob
+   * @implements module:model/Image
    * @param image
    */
   var exports = function(image) {
-
-    this['image'] = image;
-
+    NewJob.call(this);
+    Image.call(this, image);
   };
 
   /**
-   * Constructs a <code>Image</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>NewJobWithImage</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Image} obj Optional instance to populate.
-   * @return {module:model/Image} The populated <code>Image</code> instance.
+   * @param {module:model/NewJobWithImage} obj Optional instance to populate.
+   * @return {module:model/NewJobWithImage} The populated <code>NewJobWithImage</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) { 
       obj = obj || new exports();
-
-      if (data.hasOwnProperty('image')) {
-        obj['image'] = ApiClient.convertToType(data['image'], 'String');
-      }
-      if (data.hasOwnProperty('created_at')) {
-        obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
-      }
+      NewJob.constructFromObject(data, obj);
+      Image.constructFromObject(data, obj);
     }
     return obj;
   }
 
+  exports.prototype = Object.create(NewJob.prototype);
+  exports.prototype.constructor = exports;
 
+
+  // Implement Image interface:
   /**
    * Docker image to use for job.
    * @member {String} image

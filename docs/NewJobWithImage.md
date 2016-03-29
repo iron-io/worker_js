@@ -1,8 +1,7 @@
-# IronTitan.NewJobsWrapper
+# IronTitan.NewJobWithImage
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobs** | [**[NewJobWithImage]**](NewJobWithImage.md) |  | 
 
 
