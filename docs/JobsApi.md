@@ -1,4 +1,4 @@
-# IronTitan.JobsApi
+# TitanApi.JobsApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**jobIdTouchPost**](JobsApi.md#jobIdTouchPost) | **POST** /job/{id}/touch | Extend job timeout.
 [**jobsConsumeGet**](JobsApi.md#jobsConsumeGet) | **GET** /jobs/consume | Get next job.
 [**jobsGet**](JobsApi.md#jobsGet) | **GET** /jobs | Peek at list of jobs.
-[**jobsNameGet**](JobsApi.md#jobsNameGet) | **GET** /jobs/{name} | Get job list by name.
 [**jobsPost**](JobsApi.md#jobsPost) | **POST** /jobs | Enqueue Job
 
 
@@ -28,9 +27,9 @@ Cancels a job in delayed, queued or running status. The worker may continue to r
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -77,9 +76,9 @@ Delete only succeeds if job status is one of `succeeded\n| failed | cancelled`. 
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -123,9 +122,9 @@ Job is marked as failed if it was in a valid state. Job&#39;s `completed_at` tim
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -178,9 +177,9 @@ Gets a job by id.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -224,9 +223,9 @@ Retrieves the log from log storage.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -270,9 +269,9 @@ The /retry endpoint can be used to force a retry of jobs with status succeeded o
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -316,9 +315,9 @@ Job status is changed to succeeded if it was in a valid state before. Job&#39;s 
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -365,9 +364,9 @@ Consumers can sometimes take a while to run the task after accepting it.  An exa
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -411,9 +410,9 @@ Gets the next job in the queue, ready for processing. Titan may return &lt;=n jo
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var opts = { 
   'n': 1 // {Integer} Number of jobs to return.
@@ -458,9 +457,9 @@ Get a list of active jobs. This endpoint can be used to observe the state of job
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
 var opts = { 
   'n': 10 // {Integer} Number of jobs to return. Titan may return <=n jobs. Titan does not make any guarantees about job ordering, but jobs will not be repeated. To make sure you get unique jobs, use the cursor effectively. TODO: We don't actually support pagination.
@@ -495,58 +494,6 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="jobsNameGet"></a>
-# **jobsNameGet**
-> JobsWrapper jobsNameGet(name, opts)
-
-Get job list by name.
-
-Gets the next job in the queue, ready for processing.
-
-### Example
-```javascript
-var IronTitan = require('iron_titan');
-
-var apiInstance = new IronTitan.JobsApi()
-
-var name = "name_example"; // {String} Name of this set of jobs.
-
-var opts = { 
-  'createdAfter': new Date("2013-10-20T19:20:30+01:00"), // {Date} Will return jobs created after this time. In RFC3339 format.
-  'n': 56 // {Integer} Number of jobs to return.
-};
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.jobsNameGet(name, opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of this set of jobs. | 
- **createdAfter** | **Date**| Will return jobs created after this time. In RFC3339 format. | [optional] 
- **n** | **Integer**| Number of jobs to return. | [optional] 
-
-### Return type
-
-[**JobsWrapper**](JobsWrapper.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP reuqest headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
 <a name="jobsPost"></a>
 # **jobsPost**
 > JobsWrapper jobsPost(body)
@@ -557,11 +504,11 @@ Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new TitanApi.JobsApi()
 
-var body = new IronTitan.NewJobsWrapper(); // {NewJobsWrapper} Array of jobs to post.
+var body = new TitanApi.JobSubmissionsWrapper(); // {JobSubmissionsWrapper} Array of jobs to post.
 
 
 var callback = function(error, data, response) {
@@ -578,7 +525,7 @@ api.jobsPost(body, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewJobsWrapper**](NewJobsWrapper.md)| Array of jobs to post. | 
+ **body** | [**JobSubmissionsWrapper**](JobSubmissionsWrapper.md)| Array of jobs to post. | 
 
 ### Return type
 

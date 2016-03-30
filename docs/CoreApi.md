@@ -1,4 +1,4 @@
-# IronTitan.CoreApi
+# TitanApi.CoreApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -20,9 +20,9 @@ Delete only succeeds if job status is one of `succeeded\n| failed | cancelled`. 
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.CoreApi()
+var apiInstance = new TitanApi.CoreApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -66,9 +66,9 @@ Gets a job by id.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.CoreApi()
+var apiInstance = new TitanApi.CoreApi()
 
 var id = "id_example"; // {String} Job id
 
@@ -112,9 +112,9 @@ Gets the next job in the queue, ready for processing. Titan may return &lt;=n jo
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.CoreApi()
+var apiInstance = new TitanApi.CoreApi()
 
 var opts = { 
   'n': 1 // {Integer} Number of jobs to return.
@@ -159,11 +159,11 @@ Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var TitanApi = require('titan-api');
 
-var apiInstance = new IronTitan.CoreApi()
+var apiInstance = new TitanApi.CoreApi()
 
-var body = new IronTitan.NewJobsWrapper(); // {NewJobsWrapper} Array of jobs to post.
+var body = new TitanApi.JobSubmissionsWrapper(); // {JobSubmissionsWrapper} Array of jobs to post.
 
 
 var callback = function(error, data, response) {
@@ -180,7 +180,7 @@ api.jobsPost(body, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewJobsWrapper**](NewJobsWrapper.md)| Array of jobs to post. | 
+ **body** | [**JobSubmissionsWrapper**](JobSubmissionsWrapper.md)| Array of jobs to post. | 
 
 ### Return type
 

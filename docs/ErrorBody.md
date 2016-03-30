@@ -1,4 +1,4 @@
-# IronTitan.ErrorBody
+# TitanApi.ErrorBody
 
 ## Properties
 Name | Type | Description | Notes

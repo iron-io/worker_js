@@ -1,24 +1,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', '../model/IdStatus', '../model/Error', '../model/JobWrapper', '../model/JobsWrapper', '../model/NewJobsWrapper'], factory);
+    define(['../ApiClient', '../model/IdStatus', '../model/Error', '../model/JobWrapper', '../model/JobsWrapper', '../model/JobSubmissionsWrapper'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/IdStatus'), require('../model/Error'), require('../model/JobWrapper'), require('../model/JobsWrapper'), require('../model/NewJobsWrapper'));
+    module.exports = factory(require('../ApiClient'), require('../model/IdStatus'), require('../model/Error'), require('../model/JobWrapper'), require('../model/JobsWrapper'), require('../model/JobSubmissionsWrapper'));
   } else {
     // Browser globals (root is window)
-    if (!root.IronTitan) {
-      root.IronTitan = {};
+    if (!root.TitanApi) {
+      root.TitanApi = {};
     }
-    root.IronTitan.CoreApi = factory(root.IronTitan.ApiClient, root.IronTitan.IdStatus, root.IronTitan.Error, root.IronTitan.JobWrapper, root.IronTitan.JobsWrapper, root.IronTitan.NewJobsWrapper);
+    root.TitanApi.CoreApi = factory(root.TitanApi.ApiClient, root.TitanApi.IdStatus, root.TitanApi.Error, root.TitanApi.JobWrapper, root.TitanApi.JobsWrapper, root.TitanApi.JobSubmissionsWrapper);
   }
-}(this, function(ApiClient, IdStatus, Error, JobWrapper, JobsWrapper, NewJobsWrapper) {
+}(this, function(ApiClient, IdStatus, Error, JobWrapper, JobsWrapper, JobSubmissionsWrapper) {
   'use strict';
 
   /**
    * Core service.
    * @module api/CoreApi
-   * @version 0.2.0
+   * @version 0.2.4
    */
 
   /**
@@ -177,7 +177,7 @@
     /**
      * Enqueue Job
      * Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued.
-     * @param {module:model/NewJobsWrapper} body Array of jobs to post.
+     * @param {module:model/JobSubmissionsWrapper} body Array of jobs to post.
      * @param {module:api/CoreApi~jobsPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobsWrapper}
      */

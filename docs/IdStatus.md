@@ -1,4 +1,4 @@
-# IronTitan.IdStatus
+# TitanApi.IdStatus
 
 ## Properties
 Name | Type | Description | Notes

@@ -7,17 +7,17 @@
     module.exports = factory(require('superagent'));
   } else {
     // Browser globals (root is window)
-    if (!root.IronTitan) {
-      root.IronTitan = {};
+    if (!root.TitanApi) {
+      root.TitanApi = {};
     }
-    root.IronTitan.ApiClient = factory(root.superagent);
+    root.TitanApi.ApiClient = factory(root.superagent);
   }
 }(this, function(superagent) {
   'use strict';
 
   /**
    * @module ApiClient
-   * @version 0.2.0
+   * @version 0.2.4
    */
 
   /**

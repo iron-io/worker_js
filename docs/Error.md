@@ -1,4 +1,4 @@
-# IronTitan.Error
+# TitanApi.Error
 
 ## Properties
 Name | Type | Description | Notes

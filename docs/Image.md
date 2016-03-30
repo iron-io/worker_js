@@ -1,4 +1,4 @@
-# IronTitan.Image
+# TitanApi.Image
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,36 +1,36 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './IdStatus', './NewJob', './Reason'], factory);
+    define(['../ApiClient', './IdStatus', './JobSubmission', './Reason'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./IdStatus'), require('./NewJob'), require('./Reason'));
+    module.exports = factory(require('../ApiClient'), require('./IdStatus'), require('./JobSubmission'), require('./Reason'));
   } else {
     // Browser globals (root is window)
-    if (!root.IronTitan) {
-      root.IronTitan = {};
+    if (!root.TitanApi) {
+      root.TitanApi = {};
     }
-    root.IronTitan.Job = factory(root.IronTitan.ApiClient, root.IronTitan.IdStatus, root.IronTitan.NewJob, root.IronTitan.Reason);
+    root.TitanApi.Job = factory(root.TitanApi.ApiClient, root.TitanApi.IdStatus, root.TitanApi.JobSubmission, root.TitanApi.Reason);
   }
-}(this, function(ApiClient, IdStatus, NewJob, Reason) {
+}(this, function(ApiClient, IdStatus, JobSubmission, Reason) {
   'use strict';
 
   /**
    * The Job model module.
    * @module model/Job
-   * @version 0.2.0
+   * @version 0.2.4
    */
 
   /**
    * Constructs a new <code>Job</code>.
    * @alias module:model/Job
    * @class
-   * @extends module:model/NewJob
+   * @extends module:model/JobSubmission
    * @implements module:model/IdStatus
    * @param id
    */
   var exports = function(id) {
-    NewJob.call(this);
+    JobSubmission.call(this);
     IdStatus.call(this, id);
 
 
@@ -51,7 +51,7 @@
   exports.constructFromObject = function(data, obj) {
     if (data) { 
       obj = obj || new exports();
-      NewJob.constructFromObject(data, obj);
+      JobSubmission.constructFromObject(data, obj);
       IdStatus.constructFromObject(data, obj);
       if (data.hasOwnProperty('image_id')) {
         obj['image_id'] = ApiClient.convertToType(data['image_id'], 'String');
@@ -78,7 +78,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(NewJob.prototype);
+  exports.prototype = Object.create(JobSubmission.prototype);
   exports.prototype.constructor = exports;
 
 

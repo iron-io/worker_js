@@ -1,8 +1,8 @@
-# TitanApi.ImagesWrapper
+# TitanApi.JobSubmissionsWrapper
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**images** | [**[Image]**](Image.md) |  | 
+**jobs** | [**[JobSubmissionWithImage]**](JobSubmissionWithImage.md) |  | 
 
 

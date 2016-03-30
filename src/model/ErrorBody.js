@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.IronTitan) {
-      root.IronTitan = {};
+    if (!root.TitanApi) {
+      root.TitanApi = {};
     }
-    root.IronTitan.ErrorBody = factory(root.IronTitan.ApiClient);
+    root.TitanApi.ErrorBody = factory(root.TitanApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -18,7 +18,7 @@
   /**
    * The ErrorBody model module.
    * @module model/ErrorBody
-   * @version 0.2.0
+   * @version 0.2.4
    */
 
   /**

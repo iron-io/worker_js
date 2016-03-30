@@ -1,12 +1,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['./ApiClient', './model/Error', './model/ErrorBody', './model/IdStatus', './model/Image', './model/ImageWrapper', './model/ImagesWrapper', './model/Job', './model/JobWrapper', './model/JobsWrapper', './model/NewJob', './model/NewJobWithImage', './model/NewJobsWrapper', './model/Reason', './api/CoreApi', './api/ImagesApi', './api/JobsApi'], factory);
+    define(['./ApiClient', './model/Error', './model/ErrorBody', './model/IdStatus', './model/Image', './model/ImageWrapper', './model/ImagesWrapper', './model/Job', './model/JobSubmission', './model/JobSubmissionWithImage', './model/JobSubmissionsWrapper', './model/JobWrapper', './model/JobsWrapper', './model/Reason', './api/CoreApi', './api/ImagesApi', './api/JobsApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Error'), require('./model/ErrorBody'), require('./model/IdStatus'), require('./model/Image'), require('./model/ImageWrapper'), require('./model/ImagesWrapper'), require('./model/Job'), require('./model/JobWrapper'), require('./model/JobsWrapper'), require('./model/NewJob'), require('./model/NewJobWithImage'), require('./model/NewJobsWrapper'), require('./model/Reason'), require('./api/CoreApi'), require('./api/ImagesApi'), require('./api/JobsApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Error'), require('./model/ErrorBody'), require('./model/IdStatus'), require('./model/Image'), require('./model/ImageWrapper'), require('./model/ImagesWrapper'), require('./model/Job'), require('./model/JobSubmission'), require('./model/JobSubmissionWithImage'), require('./model/JobSubmissionsWrapper'), require('./model/JobWrapper'), require('./model/JobsWrapper'), require('./model/Reason'), require('./api/CoreApi'), require('./api/ImagesApi'), require('./api/JobsApi'));
   }
-}(function(ApiClient, Error, ErrorBody, IdStatus, Image, ImageWrapper, ImagesWrapper, Job, JobWrapper, JobsWrapper, NewJob, NewJobWithImage, NewJobsWrapper, Reason, CoreApi, ImagesApi, JobsApi) {
+}(function(ApiClient, Error, ErrorBody, IdStatus, Image, ImageWrapper, ImagesWrapper, Job, JobSubmission, JobSubmissionWithImage, JobSubmissionsWrapper, JobWrapper, JobsWrapper, Reason, CoreApi, ImagesApi, JobsApi) {
   'use strict';
 
   /**
@@ -15,9 +15,9 @@
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
    * <pre>
-   * var IronTitan = require('./index'); // See note below*.
-   * var xxxSvc = new IronTitan.XxxApi(); // Allocate the API class we're going to use.
-   * var yyyModel = new IronTitan.Yyy(); // Construct a model instance.
+   * var TitanApi = require('./index'); // See note below*.
+   * var xxxSvc = new TitanApi.XxxApi(); // Allocate the API class we're going to use.
+   * var yyyModel = new TitanApi.Yyy(); // Construct a model instance.
    * yyyModel.someProperty = 'someValue';
    * ...
    * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -29,8 +29,8 @@
    * <p>
    * A non-AMD browser application (discouraged) might do something like this:
    * <pre>
-   * var xxxSvc = new IronTitan.XxxApi(); // Allocate the API class we're going to use.
-   * var yyy = new IronTitan.Yyy(); // Construct a model instance.
+   * var xxxSvc = new TitanApi.XxxApi(); // Allocate the API class we're going to use.
+   * var yyy = new TitanApi.Yyy(); // Construct a model instance.
    * yyyModel.someProperty = 'someValue';
    * ...
    * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -38,7 +38,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.2.0
+   * @version 0.2.4
    */
   var exports = {
     /**
@@ -82,6 +82,21 @@
      */
     Job: Job,
     /**
+     * The JobSubmission model constructor.
+     * @property {module:model/JobSubmission}
+     */
+    JobSubmission: JobSubmission,
+    /**
+     * The JobSubmissionWithImage model constructor.
+     * @property {module:model/JobSubmissionWithImage}
+     */
+    JobSubmissionWithImage: JobSubmissionWithImage,
+    /**
+     * The JobSubmissionsWrapper model constructor.
+     * @property {module:model/JobSubmissionsWrapper}
+     */
+    JobSubmissionsWrapper: JobSubmissionsWrapper,
+    /**
      * The JobWrapper model constructor.
      * @property {module:model/JobWrapper}
      */
@@ -91,21 +106,6 @@
      * @property {module:model/JobsWrapper}
      */
     JobsWrapper: JobsWrapper,
-    /**
-     * The NewJob model constructor.
-     * @property {module:model/NewJob}
-     */
-    NewJob: NewJob,
-    /**
-     * The NewJobWithImage model constructor.
-     * @property {module:model/NewJobWithImage}
-     */
-    NewJobWithImage: NewJobWithImage,
-    /**
-     * The NewJobsWrapper model constructor.
-     * @property {module:model/NewJobsWrapper}
-     */
-    NewJobsWrapper: NewJobsWrapper,
     /**
      * The Reason model constructor.
      * @property {module:model/Reason}

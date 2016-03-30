@@ -1,24 +1,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', '../model/Error', '../model/JobWrapper', '../model/IdStatus', '../model/JobsWrapper', '../model/NewJobsWrapper'], factory);
+    define(['../ApiClient', '../model/Error', '../model/JobWrapper', '../model/IdStatus', '../model/JobsWrapper', '../model/JobSubmissionsWrapper'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/JobWrapper'), require('../model/IdStatus'), require('../model/JobsWrapper'), require('../model/NewJobsWrapper'));
+    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/JobWrapper'), require('../model/IdStatus'), require('../model/JobsWrapper'), require('../model/JobSubmissionsWrapper'));
   } else {
     // Browser globals (root is window)
-    if (!root.IronTitan) {
-      root.IronTitan = {};
+    if (!root.TitanApi) {
+      root.TitanApi = {};
     }
-    root.IronTitan.JobsApi = factory(root.IronTitan.ApiClient, root.IronTitan.Error, root.IronTitan.JobWrapper, root.IronTitan.IdStatus, root.IronTitan.JobsWrapper, root.IronTitan.NewJobsWrapper);
+    root.TitanApi.JobsApi = factory(root.TitanApi.ApiClient, root.TitanApi.Error, root.TitanApi.JobWrapper, root.TitanApi.IdStatus, root.TitanApi.JobsWrapper, root.TitanApi.JobSubmissionsWrapper);
   }
-}(this, function(ApiClient, Error, JobWrapper, IdStatus, JobsWrapper, NewJobsWrapper) {
+}(this, function(ApiClient, Error, JobWrapper, IdStatus, JobsWrapper, JobSubmissionsWrapper) {
   'use strict';
 
   /**
    * Jobs service.
    * @module api/JobsApi
-   * @version 0.2.0
+   * @version 0.2.4
    */
 
   /**
@@ -519,58 +519,6 @@
     }
 
     /**
-     * Callback function to receive the result of the jobsNameGet operation.
-     * @callback module:api/JobsApi~jobsNameGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/JobsWrapper} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get job list by name.
-     * Gets the next job in the queue, ready for processing.
-     * @param {String} name Name of this set of jobs.
-     * @param {Object} opts Optional parameters
-     * @param {Date} opts.createdAfter Will return jobs created after this time. In RFC3339 format.
-     * @param {Integer} opts.n Number of jobs to return.
-     * @param {module:api/JobsApi~jobsNameGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {module:model/JobsWrapper}
-     */
-    this.jobsNameGet = function(name, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-
-      // verify the required parameter 'name' is set
-      if (name == undefined || name == null) {
-        throw "Missing the required parameter 'name' when calling jobsNameGet";
-      }
-
-
-      var pathParams = {
-        'name': name
-      };
-      var queryParams = {
-        'created_after': opts['createdAfter'],
-        'n': opts['n']
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = JobsWrapper;
-
-      return this.apiClient.callApi(
-        '/jobs/{name}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the jobsPost operation.
      * @callback module:api/JobsApi~jobsPostCallback
      * @param {String} error Error message, if any.
@@ -581,7 +529,7 @@
     /**
      * Enqueue Job
      * Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued.
-     * @param {module:model/NewJobsWrapper} body Array of jobs to post.
+     * @param {module:model/JobSubmissionsWrapper} body Array of jobs to post.
      * @param {module:api/JobsApi~jobsPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobsWrapper}
      */
