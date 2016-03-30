@@ -18,7 +18,7 @@
   /**
    * The Image model module.
    * @module model/Image
-   * @version 0.2.4
+   * @version 0.2.5
    */
 
   /**
@@ -28,6 +28,7 @@
    * @param image
    */
   var exports = function(image) {
+
 
     this['image'] = image;
 
@@ -44,6 +45,9 @@
     if (data) { 
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
       if (data.hasOwnProperty('image')) {
         obj['image'] = ApiClient.convertToType(data['image'], 'String');
       }
@@ -56,7 +60,13 @@
 
 
   /**
-   * Docker image to use for job.
+   * Name of this image/package/code. Can and should be different than the image name (shoudn't include tag). TODO: Should we strip tag automatically if only image is passed in?
+   * @member {String} name
+   */
+  exports.prototype['name'] = undefined;
+
+  /**
+   * Docker image to use for job, including the tag.
    * @member {String} image
    */
   exports.prototype['image'] = undefined;

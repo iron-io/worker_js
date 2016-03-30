@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'));
   } else {
     // Browser globals (root is window)
-    if (!root.IronTitan) {
-      root.IronTitan = {};
+    if (!root.TitanApi) {
+      root.TitanApi = {};
     }
-    root.IronTitan.NewJob = factory(root.IronTitan.ApiClient);
+    root.TitanApi.NewJob = factory(root.TitanApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -18,7 +18,7 @@
   /**
    * The NewJob model module.
    * @module model/NewJob
-   * @version 0.2.0
+   * @version 0.2.5
    */
 
   /**
@@ -27,6 +27,7 @@
    * @class
    */
   var exports = function() {
+
 
 
 
@@ -47,6 +48,9 @@
     if (data) { 
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('image')) {
+        obj['image'] = ApiClient.convertToType(data['image'], 'String');
+      }
       if (data.hasOwnProperty('payload')) {
         obj['payload'] = ApiClient.convertToType(data['payload'], 'String');
       }
@@ -69,6 +73,12 @@
     return obj;
   }
 
+
+  /**
+   * Name of image to use.
+   * @member {String} image
+   */
+  exports.prototype['image'] = undefined;
 
   /**
    * Payload for the job. This is what you pass into each job to make it do something.

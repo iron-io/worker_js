@@ -163,7 +163,7 @@ var TitanApi = require('titan-api');
 
 var apiInstance = new TitanApi.CoreApi()
 
-var body = new TitanApi.JobSubmissionsWrapper(); // {JobSubmissionsWrapper} Array of jobs to post.
+var body = new TitanApi.NewJobsWrapper(); // {NewJobsWrapper} Array of jobs to post.
 
 
 var callback = function(error, data, response) {
@@ -180,7 +180,7 @@ api.jobsPost(body, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**JobSubmissionsWrapper**](JobSubmissionsWrapper.md)| Array of jobs to post. | 
+ **body** | [**NewJobsWrapper**](NewJobsWrapper.md)| Array of jobs to post. | 
 
 ### Return type
 

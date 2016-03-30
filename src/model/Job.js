@@ -1,38 +1,37 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './IdStatus', './JobSubmission', './Reason'], factory);
+    define(['../ApiClient', './IdStatus', './NewJob', './Reason'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./IdStatus'), require('./JobSubmission'), require('./Reason'));
+    module.exports = factory(require('../ApiClient'), require('./IdStatus'), require('./NewJob'), require('./Reason'));
   } else {
     // Browser globals (root is window)
     if (!root.TitanApi) {
       root.TitanApi = {};
     }
-    root.TitanApi.Job = factory(root.TitanApi.ApiClient, root.TitanApi.IdStatus, root.TitanApi.JobSubmission, root.TitanApi.Reason);
+    root.TitanApi.Job = factory(root.TitanApi.ApiClient, root.TitanApi.IdStatus, root.TitanApi.NewJob, root.TitanApi.Reason);
   }
-}(this, function(ApiClient, IdStatus, JobSubmission, Reason) {
+}(this, function(ApiClient, IdStatus, NewJob, Reason) {
   'use strict';
 
   /**
    * The Job model module.
    * @module model/Job
-   * @version 0.2.4
+   * @version 0.2.5
    */
 
   /**
    * Constructs a new <code>Job</code>.
    * @alias module:model/Job
    * @class
-   * @extends module:model/JobSubmission
+   * @extends module:model/NewJob
    * @implements module:model/IdStatus
    * @param id
    */
   var exports = function(id) {
-    JobSubmission.call(this);
+    NewJob.call(this);
     IdStatus.call(this, id);
-
 
 
 
@@ -51,16 +50,13 @@
   exports.constructFromObject = function(data, obj) {
     if (data) { 
       obj = obj || new exports();
-      JobSubmission.constructFromObject(data, obj);
+      NewJob.constructFromObject(data, obj);
       IdStatus.constructFromObject(data, obj);
       if (data.hasOwnProperty('image_id')) {
         obj['image_id'] = ApiClient.convertToType(data['image_id'], 'String');
       }
       if (data.hasOwnProperty('reason')) {
         obj['reason'] = Reason.constructFromObject(data['reason']);
-      }
-      if (data.hasOwnProperty('details')) {
-        obj['details'] = ApiClient.convertToType(data['details'], 'String');
       }
       if (data.hasOwnProperty('created_at')) {
         obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
@@ -78,7 +74,7 @@
     return obj;
   }
 
-  exports.prototype = Object.create(JobSubmission.prototype);
+  exports.prototype = Object.create(NewJob.prototype);
   exports.prototype.constructor = exports;
 
 
@@ -92,12 +88,6 @@
    * @member {module:model/Reason} reason
    */
   exports.prototype['reason'] = undefined;
-
-  /**
-   * Some description of the reason this Job is in current state. Used only for presentation purposes. Should be human-readable.
-   * @member {String} details
-   */
-  exports.prototype['details'] = undefined;
 
   /**
    * Time when job was submitted. Always in UTC.

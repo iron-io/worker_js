@@ -1,8 +1,8 @@
-# IronTitan.NewJobsWrapper
+# TitanApi.NewJobsWrapper
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**jobs** | [**[NewJobWithImage]**](NewJobWithImage.md) |  | 
+**jobs** | [**[NewJob]**](NewJob.md) |  | 
 
 

@@ -18,7 +18,7 @@
   /**
    * Images service.
    * @module api/ImagesApi
-   * @version 0.2.4
+   * @version 0.2.5
    */
 
   /**

@@ -1,24 +1,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './NewJobWithImage'], factory);
+    define(['../ApiClient', './NewJob'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./NewJobWithImage'));
+    module.exports = factory(require('../ApiClient'), require('./NewJob'));
   } else {
     // Browser globals (root is window)
-    if (!root.IronTitan) {
-      root.IronTitan = {};
+    if (!root.TitanApi) {
+      root.TitanApi = {};
     }
-    root.IronTitan.NewJobsWrapper = factory(root.IronTitan.ApiClient, root.IronTitan.NewJobWithImage);
+    root.TitanApi.NewJobsWrapper = factory(root.TitanApi.ApiClient, root.TitanApi.NewJob);
   }
-}(this, function(ApiClient, NewJobWithImage) {
+}(this, function(ApiClient, NewJob) {
   'use strict';
 
   /**
    * The NewJobsWrapper model module.
    * @module model/NewJobsWrapper
-   * @version 0.2.0
+   * @version 0.2.5
    */
 
   /**
@@ -44,7 +44,7 @@
       obj = obj || new exports();
 
       if (data.hasOwnProperty('jobs')) {
-        obj['jobs'] = ApiClient.convertToType(data['jobs'], [NewJobWithImage]);
+        obj['jobs'] = ApiClient.convertToType(data['jobs'], [NewJob]);
       }
     }
     return obj;
@@ -52,7 +52,7 @@
 
 
   /**
-   * @member {Array.<module:model/NewJobWithImage>} jobs
+   * @member {Array.<module:model/NewJob>} jobs
    */
   exports.prototype['jobs'] = undefined;
 
