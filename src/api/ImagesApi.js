@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/ImageWrapper'), require('../model/Error'), require('../model/ImagesWrapper'));
   } else {
     // Browser globals (root is window)
-    if (!root.TitanApi) {
-      root.TitanApi = {};
+    if (!root.IronTitan) {
+      root.IronTitan = {};
     }
-    root.TitanApi.ImagesApi = factory(root.TitanApi.ApiClient, root.TitanApi.ImageWrapper, root.TitanApi.Error, root.TitanApi.ImagesWrapper);
+    root.IronTitan.ImagesApi = factory(root.IronTitan.ApiClient, root.IronTitan.ImageWrapper, root.IronTitan.Error, root.IronTitan.ImagesWrapper);
   }
 }(this, function(ApiClient, ImageWrapper, Error, ImagesWrapper) {
   'use strict';
@@ -18,7 +18,7 @@
   /**
    * Images service.
    * @module api/ImagesApi
-   * @version 0.2.5
+   * @version 0.2.7
    */
 
   /**

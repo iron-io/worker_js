@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('./IdStatus'), require('./NewJob'), require('./Reason'));
   } else {
     // Browser globals (root is window)
-    if (!root.TitanApi) {
-      root.TitanApi = {};
+    if (!root.IronTitan) {
+      root.IronTitan = {};
     }
-    root.TitanApi.Job = factory(root.TitanApi.ApiClient, root.TitanApi.IdStatus, root.TitanApi.NewJob, root.TitanApi.Reason);
+    root.IronTitan.Job = factory(root.IronTitan.ApiClient, root.IronTitan.IdStatus, root.IronTitan.NewJob, root.IronTitan.Reason);
   }
 }(this, function(ApiClient, IdStatus, NewJob, Reason) {
   'use strict';
@@ -18,7 +18,7 @@
   /**
    * The Job model module.
    * @module model/Job
-   * @version 0.2.5
+   * @version 0.2.7
    */
 
   /**

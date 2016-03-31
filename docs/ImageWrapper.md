@@ -1,4 +1,4 @@
-# TitanApi.ImageWrapper
+# IronTitan.ImageWrapper
 
 ## Properties
 Name | Type | Description | Notes

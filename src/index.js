@@ -15,9 +15,9 @@
    * <p>
    * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
    * <pre>
-   * var TitanApi = require('./index'); // See note below*.
-   * var xxxSvc = new TitanApi.XxxApi(); // Allocate the API class we're going to use.
-   * var yyyModel = new TitanApi.Yyy(); // Construct a model instance.
+   * var IronTitan = require('./index'); // See note below*.
+   * var xxxSvc = new IronTitan.XxxApi(); // Allocate the API class we're going to use.
+   * var yyyModel = new IronTitan.Yyy(); // Construct a model instance.
    * yyyModel.someProperty = 'someValue';
    * ...
    * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -29,8 +29,8 @@
    * <p>
    * A non-AMD browser application (discouraged) might do something like this:
    * <pre>
-   * var xxxSvc = new TitanApi.XxxApi(); // Allocate the API class we're going to use.
-   * var yyy = new TitanApi.Yyy(); // Construct a model instance.
+   * var xxxSvc = new IronTitan.XxxApi(); // Allocate the API class we're going to use.
+   * var yyy = new IronTitan.Yyy(); // Construct a model instance.
    * yyyModel.someProperty = 'someValue';
    * ...
    * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
@@ -38,7 +38,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.2.5
+   * @version 0.2.7
    */
   var exports = {
     /**

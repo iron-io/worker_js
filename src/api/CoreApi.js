@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('../model/IdStatus'), require('../model/Error'), require('../model/JobWrapper'), require('../model/JobsWrapper'), require('../model/NewJobsWrapper'));
   } else {
     // Browser globals (root is window)
-    if (!root.TitanApi) {
-      root.TitanApi = {};
+    if (!root.IronTitan) {
+      root.IronTitan = {};
     }
-    root.TitanApi.CoreApi = factory(root.TitanApi.ApiClient, root.TitanApi.IdStatus, root.TitanApi.Error, root.TitanApi.JobWrapper, root.TitanApi.JobsWrapper, root.TitanApi.NewJobsWrapper);
+    root.IronTitan.CoreApi = factory(root.IronTitan.ApiClient, root.IronTitan.IdStatus, root.IronTitan.Error, root.IronTitan.JobWrapper, root.IronTitan.JobsWrapper, root.IronTitan.NewJobsWrapper);
   }
 }(this, function(ApiClient, IdStatus, Error, JobWrapper, JobsWrapper, NewJobsWrapper) {
   'use strict';
@@ -18,7 +18,7 @@
   /**
    * Core service.
    * @module api/CoreApi
-   * @version 0.2.5
+   * @version 0.2.7
    */
 
   /**

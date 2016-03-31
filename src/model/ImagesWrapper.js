@@ -7,10 +7,10 @@
     module.exports = factory(require('../ApiClient'), require('./Image'));
   } else {
     // Browser globals (root is window)
-    if (!root.TitanApi) {
-      root.TitanApi = {};
+    if (!root.IronTitan) {
+      root.IronTitan = {};
     }
-    root.TitanApi.ImagesWrapper = factory(root.TitanApi.ApiClient, root.TitanApi.Image);
+    root.IronTitan.ImagesWrapper = factory(root.IronTitan.ApiClient, root.IronTitan.Image);
   }
 }(this, function(ApiClient, Image) {
   'use strict';
@@ -18,7 +18,7 @@
   /**
    * The ImagesWrapper model module.
    * @module model/ImagesWrapper
-   * @version 0.2.5
+   * @version 0.2.7
    */
 
   /**
