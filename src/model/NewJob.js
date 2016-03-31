@@ -18,7 +18,7 @@
   /**
    * The NewJob model module.
    * @module model/NewJob
-   * @version 0.2.7
+   * @version 0.2.8
    */
 
   /**

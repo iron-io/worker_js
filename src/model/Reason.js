@@ -18,7 +18,7 @@
   /**
    * The Reason model module.
    * @module model/Reason
-   * @version 0.2.7
+   * @version 0.2.8
    */
 
   /**

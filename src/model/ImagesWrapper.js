@@ -18,7 +18,7 @@
   /**
    * The ImagesWrapper model module.
    * @module model/ImagesWrapper
-   * @version 0.2.7
+   * @version 0.2.8
    */
 
   /**
