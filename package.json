@@ -1,6 +1,6 @@
 {
   "name": "iron_titan",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "The ultimate, language agnostic, container based job processing framework.",
   "main": "src/index.js",
   "scripts": {

@@ -18,7 +18,7 @@
   /**
    * The Image model module.
    * @module model/Image
-   * @version 0.2.8
+   * @version 0.2.9
    */
 
   /**
