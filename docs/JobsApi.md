@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**jobIdFailPost**](JobsApi.md#jobIdFailPost) | **POST** /job/{id}/fail | Mark job as failed.
 [**jobIdGet**](JobsApi.md#jobIdGet) | **GET** /job/{id} | Gets job by id
 [**jobIdLogGet**](JobsApi.md#jobIdLogGet) | **GET** /job/{id}/log | Get the log of a completed job.
+[**jobIdPatch**](JobsApi.md#jobIdPatch) | **PATCH** /job/{id} | Update a job
 [**jobIdRetryPost**](JobsApi.md#jobIdRetryPost) | **POST** /job/{id}/retry | Retry a job.
 [**jobIdSuccessPost**](JobsApi.md#jobIdSuccessPost) | **POST** /job/{id}/success | Mark job as succeeded.
 [**jobIdTouchPost**](JobsApi.md#jobIdTouchPost) | **POST** /job/{id}/touch | Extend job timeout.
@@ -258,6 +259,55 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: text/plain
+
+<a name="jobIdPatch"></a>
+# **jobIdPatch**
+> JobWrapper jobIdPatch(id, body)
+
+Update a job
+
+Typically used to update status on error/completion. TODO: only allow &#39;status&#39; field.
+
+### Example
+```javascript
+var IronTitan = require('iron_titan');
+
+var apiInstance = new IronTitan.JobsApi()
+
+var id = "id_example"; // {String} Job id
+
+var body = new IronTitan.JobWrapper(); // {JobWrapper} Job data to post
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.jobIdPatch(id, body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Job id | 
+ **body** | [**JobWrapper**](JobWrapper.md)| Job data to post | 
+
+### Return type
+
+[**JobWrapper**](JobWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP reuqest headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="jobIdRetryPost"></a>
 # **jobIdRetryPost**

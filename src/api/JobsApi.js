@@ -18,7 +18,7 @@
   /**
    * Jobs service.
    * @module api/JobsApi
-   * @version 0.2.15
+   * @version 0.2.17
    */
 
   /**
@@ -283,6 +283,58 @@
 
       return this.apiClient.callApi(
         '/job/{id}/log', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the jobIdPatch operation.
+     * @callback module:api/JobsApi~jobIdPatchCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/JobWrapper} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Update a job
+     * Typically used to update status on error/completion. TODO: only allow &#39;status&#39; field.
+     * @param {String} id Job id
+     * @param {module:model/JobWrapper} body Job data to post
+     * @param {module:api/JobsApi~jobIdPatchCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:model/JobWrapper}
+     */
+    this.jobIdPatch = function(id, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling jobIdPatch";
+      }
+
+      // verify the required parameter 'body' is set
+      if (body == undefined || body == null) {
+        throw "Missing the required parameter 'body' when calling jobIdPatch";
+      }
+
+
+      var pathParams = {
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = JobWrapper;
+
+      return this.apiClient.callApi(
+        '/job/{id}', 'PATCH',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
