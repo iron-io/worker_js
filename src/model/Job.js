@@ -18,7 +18,7 @@
   /**
    * The Job model module.
    * @module model/Job
-   * @version 0.2.17
+   * @version 0.3.0
    */
 
   /**
@@ -32,6 +32,7 @@
   var exports = function(id) {
     NewJob.call(this);
     IdStatus.call(this, id);
+
 
 
 
@@ -52,8 +53,8 @@
       obj = obj || new exports();
       NewJob.constructFromObject(data, obj);
       IdStatus.constructFromObject(data, obj);
-      if (data.hasOwnProperty('image_id')) {
-        obj['image_id'] = ApiClient.convertToType(data['image_id'], 'String');
+      if (data.hasOwnProperty('group_name')) {
+        obj['group_name'] = ApiClient.convertToType(data['group_name'], 'String');
       }
       if (data.hasOwnProperty('reason')) {
         obj['reason'] = Reason.constructFromObject(data['reason']);
@@ -70,6 +71,9 @@
       if (data.hasOwnProperty('retry_of')) {
         obj['retry_of'] = ApiClient.convertToType(data['retry_of'], 'String');
       }
+      if (data.hasOwnProperty('retry_id')) {
+        obj['retry_id'] = ApiClient.convertToType(data['retry_id'], 'String');
+      }
     }
     return obj;
   }
@@ -79,10 +83,10 @@
 
 
   /**
-   * Image to execute to run this Job. Get details via the /image/{id} endpoint.
-   * @member {String} image_id
+   * Group this job belongs to. 
+   * @member {String} group_name
    */
-  exports.prototype['image_id'] = undefined;
+  exports.prototype['group_name'] = undefined;
 
   /**
    * @member {module:model/Reason} reason
@@ -113,6 +117,12 @@
    */
   exports.prototype['retry_of'] = undefined;
 
+  /**
+   * If this field is set, then this job was retried by the job referenced in this field.
+   * @member {String} retry_id
+   */
+  exports.prototype['retry_id'] = undefined;
+
   // Implement IdStatus interface:
   /**
    * Unique identifier representing a specific job.
@@ -121,7 +131,7 @@
   exports.prototype['id'] = undefined;
 
   /**
-   * States and valid transitions.\n\n                 +---------+\n       +---------> delayed <----------------+\n                 +----+----+                |\n                      |                     |\n                      |                     |\n                 +----v----+                |\n       +---------> queued  <----------------+\n                 +----+----+                *\n                      |                     *\n                      |               retry * creates new job\n                 +----v----+                *\n                 | running |                *\n                 +--+-+-+--+                |\n          +---------|-|-|-----+-------------+\n      +---|---------+ | +-----|---------+   |\n      |   |           |       |         |   |\n+-----v---^-+      +--v-------^+     +--v---^-+\n| success   |      | cancelled |     |  error |\n+-----------+      +-----------+     +--------+\n\n* delayed - has a delay.\n* queued - Ready to be consumed when it's turn comes.\n* running - Currently consumed by a runner which will attempt to process it.\n* success - (or complete? success/error is common javascript terminology)\n* error - Something went wrong. In this case more information can be obtained\n  by inspecting the \"reason\" field.\n  - timeout\n  - killed - forcibly killed by worker due to resource restrictions or access\n    violations.\n  - bad_exit - exited with non-zero status due to program termination/crash.\n* cancelled - cancelled via API. More information in the reason field.\n  - client_request - Request was cancelled by a client. See \"details\" for any\n    details.
+   * States and valid transitions.\n\n                 +---------+\n       +---------> delayed <----------------+\n                 +----+----+                |\n                      |                     |\n                      |                     |\n                 +----v----+                |\n       +---------> queued  <----------------+\n                 +----+----+                *\n                      |                     *\n                      |               retry * creates new job\n                 +----v----+                *\n                 | running |                *\n                 +--+-+-+--+                |\n          +---------|-|-|-----+-------------+\n      +---|---------+ | +-----|---------+   |\n      |   |           |       |         |   |\n+-----v---^-+      +--v-------^+     +--v---^-+\n| success   |      | cancelled |     |  error |\n+-----------+      +-----------+     +--------+\n\n* delayed - has a delay.\n* queued - Ready to be consumed when it's turn comes.\n* running - Currently consumed by a runner which will attempt to process it.\n* success - (or complete? success/error is common javascript terminology)\n* error - Something went wrong. In this case more information can be obtained\n  by inspecting the \"reason\" field.\n  - timeout\n  - killed - forcibly killed by worker due to resource restrictions or access\n    violations.\n  - bad_exit - exited with non-zero status due to program termination/crash.\n* cancelled - cancelled via API. More information in the reason field.\n  - client_request - Request was cancelled by a client. \n
    * @member {module:model/IdStatus.StatusEnum} status
    */
   exports.prototype['status'] = undefined;

@@ -18,7 +18,7 @@
   /**
    * The ErrorBody model module.
    * @module model/ErrorBody
-   * @version 0.2.17
+   * @version 0.3.0
    */
 
   /**

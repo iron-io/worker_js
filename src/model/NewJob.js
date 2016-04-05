@@ -18,7 +18,7 @@
   /**
    * The NewJob model module.
    * @module model/NewJob
-   * @version 0.2.17
+   * @version 0.3.0
    */
 
   /**
@@ -94,7 +94,7 @@
   exports.prototype['delay'] = 0;
 
   /**
-   * Maximum runtime in seconds. If a consumer retrieves the job, but does not change it's status within timeout seconds, the job is considered failed, with reason timeout (Titan may allow a small grace period). The consumer should also kill the job after timeout seconds. If a consumer tries to change status after Titan has already timed out the job, the consumer will be ignored.
+   * Maximum runtime in seconds. If a consumer retrieves the\njob, but does not change it's status within timeout seconds, the job\nis considered failed, with reason timeout (Titan may allow a small\ngrace period). The consumer should also kill the job after timeout\nseconds. If a consumer tries to change status after Titan has already\ntimed out the job, the consumer will be ignored.\n
    * @member {Integer} timeout
    * @default 60
    */
@@ -108,7 +108,7 @@
   exports.prototype['priority'] = 0;
 
   /**
-   * Number of automatic retries this job is allowed. A retry will be attempted if a task fails. Max 25.\nAutomatic retries are performed by titan when a task reaches a failed state and has `max_retries` > 0. A retry is performed by queueing a new job with the same image id and payload. The new job's max_retries is one less than the original. The new job's `retry_of` field is set to the original Job ID.  Titan will delay the new job for retries_delay seconds before queueing it. Cancelled or successful tasks are never automatically retried.
+   * \"Number of automatic retries this job is allowed. A retry will be attempted if a task fails. Max 25. Automatic retries are performed by titan when a task reaches a failed state and has `max_retries` > 0. A retry is performed by queueing a new job with the same image id and payload. The new job's max_retries is one less than the original. The new job's `retry_of` field is set to the original Job ID.  Titan will delay the new job for retries_delay seconds before queueing it. Cancelled or successful tasks are never automatically retried.\"\n
    * @member {Integer} max_retries
    * @default 3
    */

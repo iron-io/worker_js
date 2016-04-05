@@ -18,7 +18,7 @@
   /**
    * The NewJobsWrapper model module.
    * @module model/NewJobsWrapper
-   * @version 0.2.17
+   * @version 0.3.0
    */
 
   /**

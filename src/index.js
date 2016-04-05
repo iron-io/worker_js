@@ -1,12 +1,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['./ApiClient', './model/Error', './model/ErrorBody', './model/IdStatus', './model/Image', './model/ImageWrapper', './model/ImagesWrapper', './model/Job', './model/JobWrapper', './model/JobsWrapper', './model/NewJob', './model/NewJobsWrapper', './model/Reason', './api/CoreApi', './api/ImagesApi', './api/JobsApi'], factory);
+    define(['./ApiClient', './model/Error', './model/ErrorBody', './model/Group', './model/GroupWrapper', './model/GroupsWrapper', './model/IdStatus', './model/Job', './model/JobWrapper', './model/JobsWrapper', './model/NewJob', './model/NewJobsWrapper', './model/Reason', './api/GroupsApi', './api/JobsApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Error'), require('./model/ErrorBody'), require('./model/IdStatus'), require('./model/Image'), require('./model/ImageWrapper'), require('./model/ImagesWrapper'), require('./model/Job'), require('./model/JobWrapper'), require('./model/JobsWrapper'), require('./model/NewJob'), require('./model/NewJobsWrapper'), require('./model/Reason'), require('./api/CoreApi'), require('./api/ImagesApi'), require('./api/JobsApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Error'), require('./model/ErrorBody'), require('./model/Group'), require('./model/GroupWrapper'), require('./model/GroupsWrapper'), require('./model/IdStatus'), require('./model/Job'), require('./model/JobWrapper'), require('./model/JobsWrapper'), require('./model/NewJob'), require('./model/NewJobsWrapper'), require('./model/Reason'), require('./api/GroupsApi'), require('./api/JobsApi'));
   }
-}(function(ApiClient, Error, ErrorBody, IdStatus, Image, ImageWrapper, ImagesWrapper, Job, JobWrapper, JobsWrapper, NewJob, NewJobsWrapper, Reason, CoreApi, ImagesApi, JobsApi) {
+}(function(ApiClient, Error, ErrorBody, Group, GroupWrapper, GroupsWrapper, IdStatus, Job, JobWrapper, JobsWrapper, NewJob, NewJobsWrapper, Reason, GroupsApi, JobsApi) {
   'use strict';
 
   /**
@@ -38,7 +38,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.2.17
+   * @version 0.3.0
    */
   var exports = {
     /**
@@ -57,25 +57,25 @@
      */
     ErrorBody: ErrorBody,
     /**
+     * The Group model constructor.
+     * @property {module:model/Group}
+     */
+    Group: Group,
+    /**
+     * The GroupWrapper model constructor.
+     * @property {module:model/GroupWrapper}
+     */
+    GroupWrapper: GroupWrapper,
+    /**
+     * The GroupsWrapper model constructor.
+     * @property {module:model/GroupsWrapper}
+     */
+    GroupsWrapper: GroupsWrapper,
+    /**
      * The IdStatus model constructor.
      * @property {module:model/IdStatus}
      */
     IdStatus: IdStatus,
-    /**
-     * The Image model constructor.
-     * @property {module:model/Image}
-     */
-    Image: Image,
-    /**
-     * The ImageWrapper model constructor.
-     * @property {module:model/ImageWrapper}
-     */
-    ImageWrapper: ImageWrapper,
-    /**
-     * The ImagesWrapper model constructor.
-     * @property {module:model/ImagesWrapper}
-     */
-    ImagesWrapper: ImagesWrapper,
     /**
      * The Job model constructor.
      * @property {module:model/Job}
@@ -107,15 +107,10 @@
      */
     Reason: Reason,
     /**
-     * The CoreApi service constructor.
-     * @property {module:api/CoreApi}
+     * The GroupsApi service constructor.
+     * @property {module:api/GroupsApi}
      */
-    CoreApi: CoreApi,
-    /**
-     * The ImagesApi service constructor.
-     * @property {module:api/ImagesApi}
-     */
-    ImagesApi: ImagesApi,
+    GroupsApi: GroupsApi,
     /**
      * The JobsApi service constructor.
      * @property {module:api/JobsApi}

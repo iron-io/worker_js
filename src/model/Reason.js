@@ -18,12 +18,12 @@
   /**
    * The Reason model module.
    * @module model/Reason
-   * @version 0.2.17
+   * @version 0.3.0
    */
 
   /**
    * Constructs a new <code>Reason</code>.
-   * Machine usable reason for job being in this state. See `details` for more information (if any).\n\nValid values for error status are `timeout | killed | bad_exit`.\nValid values for cancelled status are `client_request`.\nFor everything else, this is undefined.
+   * Machine usable reason for job being in this state. \nValid values for error status are `timeout | killed | bad_exit`.\nValid values for cancelled status are `client_request`.\nFor everything else, this is undefined.\n
    * @alias module:model/Reason
    * @class
    */
