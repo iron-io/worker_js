@@ -416,6 +416,65 @@
     }
 
     /**
+     * Callback function to receive the result of the groupsGroupNameJobsIdPatch operation.
+     * @callback module:api/JobsApi~groupsGroupNameJobsIdPatchCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/JobWrapper} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Update a job
+     * Used to update status on job transitions. Eg: from &#39;running&#39; to &#39;success&#39;.
+     * @param {String} groupName Name of group for this set of jobs.
+     * @param {String} id Job id
+     * @param {module:model/JobWrapper} body Job data to post
+     * @param {module:api/JobsApi~groupsGroupNameJobsIdPatchCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:model/JobWrapper}
+     */
+    this.groupsGroupNameJobsIdPatch = function(groupName, id, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'groupName' is set
+      if (groupName == undefined || groupName == null) {
+        throw "Missing the required parameter 'groupName' when calling groupsGroupNameJobsIdPatch";
+      }
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling groupsGroupNameJobsIdPatch";
+      }
+
+      // verify the required parameter 'body' is set
+      if (body == undefined || body == null) {
+        throw "Missing the required parameter 'body' when calling groupsGroupNameJobsIdPatch";
+      }
+
+
+      var pathParams = {
+        'group_name': groupName,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = JobWrapper;
+
+      return this.apiClient.callApi(
+        '/groups/{group_name}/jobs/{id}', 'PATCH',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the groupsGroupNameJobsIdRetryPost operation.
      * @callback module:api/JobsApi~groupsGroupNameJobsIdRetryPostCallback
      * @param {String} error Error message, if any.
