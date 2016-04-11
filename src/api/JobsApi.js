@@ -1,24 +1,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', '../model/JobsWrapper', '../model/Error', '../model/JobWrapper', '../model/IdStatus', '../model/NewJobsWrapper'], factory);
+    define(['../ApiClient', '../model/JobsWrapper', '../model/Error', '../model/JobWrapper', '../model/IdStatus', '../model/Start', '../model/NewJobsWrapper'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/JobsWrapper'), require('../model/Error'), require('../model/JobWrapper'), require('../model/IdStatus'), require('../model/NewJobsWrapper'));
+    module.exports = factory(require('../ApiClient'), require('../model/JobsWrapper'), require('../model/Error'), require('../model/JobWrapper'), require('../model/IdStatus'), require('../model/Start'), require('../model/NewJobsWrapper'));
   } else {
     // Browser globals (root is window)
     if (!root.IronTitan) {
       root.IronTitan = {};
     }
-    root.IronTitan.JobsApi = factory(root.IronTitan.ApiClient, root.IronTitan.JobsWrapper, root.IronTitan.Error, root.IronTitan.JobWrapper, root.IronTitan.IdStatus, root.IronTitan.NewJobsWrapper);
+    root.IronTitan.JobsApi = factory(root.IronTitan.ApiClient, root.IronTitan.JobsWrapper, root.IronTitan.Error, root.IronTitan.JobWrapper, root.IronTitan.IdStatus, root.IronTitan.Start, root.IronTitan.NewJobsWrapper);
   }
-}(this, function(ApiClient, JobsWrapper, Error, JobWrapper, IdStatus, NewJobsWrapper) {
+}(this, function(ApiClient, JobsWrapper, Error, JobWrapper, IdStatus, Start, NewJobsWrapper) {
   'use strict';
 
   /**
    * Jobs service.
    * @module api/JobsApi
-   * @version 0.3.0
+   * @version 0.3.2
    */
 
   /**
@@ -94,7 +94,7 @@
 
     /**
      * Cancel a job.
-     * Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to `client_request`.
+     * Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to &#x60;client_request&#x60;.
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:api/JobsApi~groupsGroupNameJobsIdCancelPostCallback} callback The callback function, accepting three arguments: error, data, response
@@ -147,7 +147,7 @@
 
     /**
      * Delete the job.
-     * Delete only succeeds if job status is one of `succeeded\n| failed | cancelled`. Cancel a job if it is another state and needs to\nbe deleted.  All information about the job, including the log, is\nirretrievably lost when this is invoked.\n
+     * Delete only succeeds if job status is one of &#x60;succeeded\n| failed | cancelled&#x60;. Cancel a job if it is another state and needs to\nbe deleted.  All information about the job, including the log, is\nirretrievably lost when this is invoked.\n
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:api/JobsApi~groupsGroupNameJobsIdDeleteCallback} callback The callback function, accepting three arguments: error, data, response
@@ -199,7 +199,7 @@
 
     /**
      * Mark job as failed.
-     * Job is marked as failed if it was in a valid state. Job&#39;s `completed_at` time is initialized.
+     * Job is marked as failed if it was in a valid state. Job&#39;s &#x60;finished_at&#x60; time is initialized.
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {String} reason Reason for job failure.
@@ -368,7 +368,7 @@
      * Logs are sent after a job completes since they may be very large and the runner can process the next job.
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
-     * @param {File} log Output log for the job. Content-Type must be \&quot;text/plain; charset=utf-8\&quot;.
+     * @param {File} log Output log for the job. Content-Type must be \&quot;text/plain; charset&#x3D;utf-8\&quot;.
      * @param {module:api/JobsApi~groupsGroupNameJobsIdLogPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobWrapper}
      */
@@ -424,7 +424,7 @@
      */
 
     /**
-     * Update a job
+     * DEPRECATED - Update a job
      * Used to update status on job transitions. Eg: from &#39;running&#39; to &#39;success&#39;.
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
@@ -484,7 +484,7 @@
 
     /**
      * Retry a job.
-     * \&quot;The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries = 0.\&quot;\n
+     * \&quot;The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries &#x3D; 0.\&quot;\n
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:api/JobsApi~groupsGroupNameJobsIdRetryPostCallback} callback The callback function, accepting three arguments: error, data, response
@@ -528,6 +528,65 @@
     }
 
     /**
+     * Callback function to receive the result of the groupsGroupNameJobsIdStartPost operation.
+     * @callback module:api/JobsApi~groupsGroupNameJobsIdStartPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/JobWrapper} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Mark job as started, ie: status &#x3D; &#39;running&#39;
+     * Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s &#x60;started_at&#x60; time is initialized.
+     * @param {String} groupName Name of group for this set of jobs.
+     * @param {String} id Job id
+     * @param {module:model/Start} body 
+     * @param {module:api/JobsApi~groupsGroupNameJobsIdStartPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:model/JobWrapper}
+     */
+    this.groupsGroupNameJobsIdStartPost = function(groupName, id, body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'groupName' is set
+      if (groupName == undefined || groupName == null) {
+        throw "Missing the required parameter 'groupName' when calling groupsGroupNameJobsIdStartPost";
+      }
+
+      // verify the required parameter 'id' is set
+      if (id == undefined || id == null) {
+        throw "Missing the required parameter 'id' when calling groupsGroupNameJobsIdStartPost";
+      }
+
+      // verify the required parameter 'body' is set
+      if (body == undefined || body == null) {
+        throw "Missing the required parameter 'body' when calling groupsGroupNameJobsIdStartPost";
+      }
+
+
+      var pathParams = {
+        'group_name': groupName,
+        'id': id
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = JobWrapper;
+
+      return this.apiClient.callApi(
+        '/groups/{group_name}/jobs/{id}/start', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the groupsGroupNameJobsIdSuccessPost operation.
      * @callback module:api/JobsApi~groupsGroupNameJobsIdSuccessPostCallback
      * @param {String} error Error message, if any.
@@ -537,7 +596,7 @@
 
     /**
      * Mark job as succeeded.
-     * Job status is changed to succeeded if it was in a valid state before. Job&#39;s `completed_at` time is initialized.
+     * Job status is changed to succeeded if it was in a valid state before. Job&#39;s &#x60;completed_at&#x60; time is initialized.
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:api/JobsApi~groupsGroupNameJobsIdSuccessPostCallback} callback The callback function, accepting three arguments: error, data, response
@@ -694,7 +753,7 @@
 
     /**
      * Get next job.
-     * Gets the next job in the queue, ready for processing. Titan may return &lt;=n jobs. Consumers should start processing jobs in order. Each returned job is set to `status` \&quot;running\&quot; and `started_at` is set to the current time. No other consumer can retrieve this job.
+     * Gets the next job in the queue, ready for processing. Titan may return &lt;&#x3D;n jobs. Consumers should start processing jobs in order. Each returned job is set to &#x60;status&#x60; \&quot;running\&quot; and &#x60;started_at&#x60; is set to the current time. No other consumer can retrieve this job.
      * @param {Object} opts Optional parameters
      * @param {Integer} opts.n Number of jobs to return. (default to 1)
      * @param {module:api/JobsApi~jobsGetCallback} callback The callback function, accepting three arguments: error, data, response

@@ -11,8 +11,9 @@ Method | HTTP request | Description
 [**groupsGroupNameJobsIdGet**](JobsApi.md#groupsGroupNameJobsIdGet) | **GET** /groups/{group_name}/jobs/{id} | Gets job by id
 [**groupsGroupNameJobsIdLogGet**](JobsApi.md#groupsGroupNameJobsIdLogGet) | **GET** /groups/{group_name}/jobs/{id}/log | Get the log of a completed job.
 [**groupsGroupNameJobsIdLogPost**](JobsApi.md#groupsGroupNameJobsIdLogPost) | **POST** /groups/{group_name}/jobs/{id}/log | Send in a log for storage.
-[**groupsGroupNameJobsIdPatch**](JobsApi.md#groupsGroupNameJobsIdPatch) | **PATCH** /groups/{group_name}/jobs/{id} | Update a job
+[**groupsGroupNameJobsIdPatch**](JobsApi.md#groupsGroupNameJobsIdPatch) | **PATCH** /groups/{group_name}/jobs/{id} | DEPRECATED - Update a job
 [**groupsGroupNameJobsIdRetryPost**](JobsApi.md#groupsGroupNameJobsIdRetryPost) | **POST** /groups/{group_name}/jobs/{id}/retry | Retry a job.
+[**groupsGroupNameJobsIdStartPost**](JobsApi.md#groupsGroupNameJobsIdStartPost) | **POST** /groups/{group_name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
 [**groupsGroupNameJobsIdSuccessPost**](JobsApi.md#groupsGroupNameJobsIdSuccessPost) | **POST** /groups/{group_name}/jobs/{id}/success | Mark job as succeeded.
 [**groupsGroupNameJobsIdTouchPost**](JobsApi.md#groupsGroupNameJobsIdTouchPost) | **POST** /groups/{group_name}/jobs/{id}/touch | Extend job timeout.
 [**groupsGroupNameJobsPost**](JobsApi.md#groupsGroupNameJobsPost) | **POST** /groups/{group_name}/jobs | Enqueue Job
@@ -77,7 +78,7 @@ No authorization required
 
 Cancel a job.
 
-Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to `client_request`.
+Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to &#x60;client_request&#x60;.
 
 ### Example
 ```javascript
@@ -126,7 +127,7 @@ No authorization required
 
 Delete the job.
 
-Delete only succeeds if job status is one of `succeeded\n| failed | cancelled`. Cancel a job if it is another state and needs to\nbe deleted.  All information about the job, including the log, is\nirretrievably lost when this is invoked.\n
+Delete only succeeds if job status is one of &#x60;succeeded\n| failed | cancelled&#x60;. Cancel a job if it is another state and needs to\nbe deleted.  All information about the job, including the log, is\nirretrievably lost when this is invoked.\n
 
 ### Example
 ```javascript
@@ -175,7 +176,7 @@ No authorization required
 
 Mark job as failed.
 
-Job is marked as failed if it was in a valid state. Job&#39;s `completed_at` time is initialized.
+Job is marked as failed if it was in a valid state. Job&#39;s &#x60;finished_at&#x60; time is initialized.
 
 ### Example
 ```javascript
@@ -356,7 +357,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupName** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
- **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset=utf-8\&quot;. | 
+ **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset&#x3D;utf-8\&quot;. | 
 
 ### Return type
 
@@ -375,7 +376,7 @@ No authorization required
 # **groupsGroupNameJobsIdPatch**
 > JobWrapper groupsGroupNameJobsIdPatch(groupName, id, body)
 
-Update a job
+DEPRECATED - Update a job
 
 Used to update status on job transitions. Eg: from &#39;running&#39; to &#39;success&#39;.
 
@@ -429,7 +430,7 @@ No authorization required
 
 Retry a job.
 
-\&quot;The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries = 0.\&quot;\n
+\&quot;The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries &#x3D; 0.\&quot;\n
 
 ### Example
 ```javascript
@@ -472,13 +473,65 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="groupsGroupNameJobsIdStartPost"></a>
+# **groupsGroupNameJobsIdStartPost**
+> JobWrapper groupsGroupNameJobsIdStartPost(groupName, id, body)
+
+Mark job as started, ie: status &#x3D; &#39;running&#39;
+
+Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s &#x60;started_at&#x60; time is initialized.
+
+### Example
+```javascript
+var IronTitan = require('iron_titan');
+
+var apiInstance = new IronTitan.JobsApi()
+
+var groupName = "groupName_example"; // {String} Name of group for this set of jobs.
+
+var id = "id_example"; // {String} Job id
+
+var body = new IronTitan.Start(); // {Start} 
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.groupsGroupNameJobsIdStartPost(groupName, id, body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **groupName** | **String**| Name of group for this set of jobs. | 
+ **id** | **String**| Job id | 
+ **body** | [**Start**](Start.md)|  | 
+
+### Return type
+
+[**JobWrapper**](JobWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP reuqest headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="groupsGroupNameJobsIdSuccessPost"></a>
 # **groupsGroupNameJobsIdSuccessPost**
 > JobWrapper groupsGroupNameJobsIdSuccessPost(groupName, id)
 
 Mark job as succeeded.
 
-Job status is changed to succeeded if it was in a valid state before. Job&#39;s `completed_at` time is initialized.
+Job status is changed to succeeded if it was in a valid state before. Job&#39;s &#x60;completed_at&#x60; time is initialized.
 
 ### Example
 ```javascript
@@ -625,7 +678,7 @@ No authorization required
 
 Get next job.
 
-Gets the next job in the queue, ready for processing. Titan may return &lt;=n jobs. Consumers should start processing jobs in order. Each returned job is set to `status` \&quot;running\&quot; and `started_at` is set to the current time. No other consumer can retrieve this job.
+Gets the next job in the queue, ready for processing. Titan may return &lt;&#x3D;n jobs. Consumers should start processing jobs in order. Each returned job is set to &#x60;status&#x60; \&quot;running\&quot; and &#x60;started_at&#x60; is set to the current time. No other consumer can retrieve this job.
 
 ### Example
 ```javascript

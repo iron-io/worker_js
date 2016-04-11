@@ -18,7 +18,7 @@
   /**
    * The NewJob model module.
    * @module model/NewJob
-   * @version 0.3.0
+   * @version 0.3.2
    */
 
   /**
@@ -27,6 +27,8 @@
    * @class
    */
   var exports = function() {
+
+
 
 
 
@@ -50,6 +52,12 @@
 
       if (data.hasOwnProperty('image')) {
         obj['image'] = ApiClient.convertToType(data['image'], 'String');
+      }
+      if (data.hasOwnProperty('username')) {
+        obj['username'] = ApiClient.convertToType(data['username'], 'String');
+      }
+      if (data.hasOwnProperty('password')) {
+        obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
       if (data.hasOwnProperty('payload')) {
         obj['payload'] = ApiClient.convertToType(data['payload'], 'String');
@@ -79,6 +87,18 @@
    * @member {String} image
    */
   exports.prototype['image'] = undefined;
+
+  /**
+   * Username for private images
+   * @member {String} username
+   */
+  exports.prototype['username'] = undefined;
+
+  /**
+   * Password for private images
+   * @member {String} password
+   */
+  exports.prototype['password'] = undefined;
 
   /**
    * Payload for the job. This is what you pass into each job to make it do something.

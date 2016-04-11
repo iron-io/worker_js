@@ -10,42 +10,51 @@
     if (!root.IronTitan) {
       root.IronTitan = {};
     }
-    root.IronTitan.Reason = factory(root.IronTitan.ApiClient);
+    root.IronTitan.Start = factory(root.IronTitan.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
 
   /**
-   * The Reason model module.
-   * @module model/Reason
+   * The Start model module.
+   * @module model/Start
    * @version 0.3.2
    */
 
   /**
-   * Constructs a new <code>Reason</code>.
-   * Machine usable reason for job being in this state.\nValid values for error status are &#x60;timeout | killed | bad_exit&#x60;.\nValid values for cancelled status are &#x60;client_request&#x60;.\nFor everything else, this is undefined.\n
-   * @alias module:model/Reason
+   * Constructs a new <code>Start</code>.
+   * @alias module:model/Start
    * @class
    */
   var exports = function() {
 
+
   };
 
   /**
-   * Constructs a <code>Reason</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Start</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Reason} obj Optional instance to populate.
-   * @return {module:model/Reason} The populated <code>Reason</code> instance.
+   * @param {module:model/Start} obj Optional instance to populate.
+   * @return {module:model/Start} The populated <code>Start</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) { 
       obj = obj || new exports();
 
+      if (data.hasOwnProperty('started_at')) {
+        obj['started_at'] = ApiClient.convertToType(data['started_at'], 'Date');
+      }
     }
     return obj;
   }
 
+
+  /**
+   * Time when job started execution. Always in UTC.
+   * @member {Date} started_at
+   */
+  exports.prototype['started_at'] = undefined;
 
 
 
