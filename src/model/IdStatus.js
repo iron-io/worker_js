@@ -18,18 +18,17 @@
   /**
    * The IdStatus model module.
    * @module model/IdStatus
-   * @version 0.3.2
+   * @version 0.3.3
    */
 
   /**
    * Constructs a new <code>IdStatus</code>.
    * @alias module:model/IdStatus
    * @class
-   * @param id
    */
-  var exports = function(id) {
+  var exports = function() {
 
-    this['id'] = id;
+
 
   };
 

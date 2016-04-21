@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**groupsGroupNameJobsIdGet**](JobsApi.md#groupsGroupNameJobsIdGet) | **GET** /groups/{group_name}/jobs/{id} | Gets job by id
 [**groupsGroupNameJobsIdLogGet**](JobsApi.md#groupsGroupNameJobsIdLogGet) | **GET** /groups/{group_name}/jobs/{id}/log | Get the log of a completed job.
 [**groupsGroupNameJobsIdLogPost**](JobsApi.md#groupsGroupNameJobsIdLogPost) | **POST** /groups/{group_name}/jobs/{id}/log | Send in a log for storage.
-[**groupsGroupNameJobsIdPatch**](JobsApi.md#groupsGroupNameJobsIdPatch) | **PATCH** /groups/{group_name}/jobs/{id} | DEPRECATED - Update a job
 [**groupsGroupNameJobsIdRetryPost**](JobsApi.md#groupsGroupNameJobsIdRetryPost) | **POST** /groups/{group_name}/jobs/{id}/retry | Retry a job.
 [**groupsGroupNameJobsIdStartPost**](JobsApi.md#groupsGroupNameJobsIdStartPost) | **POST** /groups/{group_name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
 [**groupsGroupNameJobsIdSuccessPost**](JobsApi.md#groupsGroupNameJobsIdSuccessPost) | **POST** /groups/{group_name}/jobs/{id}/success | Mark job as succeeded.
@@ -67,7 +66,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -116,7 +115,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -165,7 +164,7 @@ null (empty response body)
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -217,7 +216,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -266,7 +265,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -315,7 +314,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: text/plain
@@ -367,61 +366,9 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-<a name="groupsGroupNameJobsIdPatch"></a>
-# **groupsGroupNameJobsIdPatch**
-> JobWrapper groupsGroupNameJobsIdPatch(groupName, id, body)
-
-DEPRECATED - Update a job
-
-Used to update status on job transitions. Eg: from &#39;running&#39; to &#39;success&#39;.
-
-### Example
-```javascript
-var IronTitan = require('iron_titan');
-
-var apiInstance = new IronTitan.JobsApi()
-
-var groupName = "groupName_example"; // {String} Name of group for this set of jobs.
-
-var id = "id_example"; // {String} Job id
-
-var body = new IronTitan.JobWrapper(); // {JobWrapper} Job data to post
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.groupsGroupNameJobsIdPatch(groupName, id, body, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **groupName** | **String**| Name of group for this set of jobs. | 
- **id** | **String**| Job id | 
- **body** | [**JobWrapper**](JobWrapper.md)| Job data to post | 
-
-### Return type
-
-[**JobWrapper**](JobWrapper.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP reuqest headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="groupsGroupNameJobsIdRetryPost"></a>
@@ -468,7 +415,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -520,7 +467,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -569,7 +516,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -618,7 +565,7 @@ null (empty response body)
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -667,7 +614,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -714,7 +661,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json

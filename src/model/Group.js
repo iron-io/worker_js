@@ -18,19 +18,15 @@
   /**
    * The Group model module.
    * @module model/Group
-   * @version 0.3.2
+   * @version 0.3.3
    */
 
   /**
    * Constructs a new <code>Group</code>.
    * @alias module:model/Group
    * @class
-   * @param name
    */
-  var exports = function(name) {
-
-    this['name'] = name;
-
+  var exports = function() {
 
 
 
@@ -50,15 +46,6 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('image')) {
-        obj['image'] = ApiClient.convertToType(data['image'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
-      }
       if (data.hasOwnProperty('created_at')) {
         obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
       }
@@ -72,24 +59,6 @@
    * @member {String} name
    */
   exports.prototype['name'] = undefined;
-
-  /**
-   * Docker image to use for job, including the tag.
-   * @member {String} image
-   */
-  exports.prototype['image'] = undefined;
-
-  /**
-   * Username for private images
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-
-  /**
-   * Password for private images
-   * @member {String} password
-   */
-  exports.prototype['password'] = undefined;
 
   /**
    * Time when image first used/created.

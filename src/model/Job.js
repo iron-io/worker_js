@@ -18,7 +18,7 @@
   /**
    * The Job model module.
    * @module model/Job
-   * @version 0.3.2
+   * @version 0.3.3
    */
 
   /**
@@ -27,11 +27,12 @@
    * @class
    * @extends module:model/NewJob
    * @implements module:model/IdStatus
-   * @param id
+   * @param image
+   * @param priority
    */
-  var exports = function(id) {
-    NewJob.call(this);
-    IdStatus.call(this, id);
+  var exports = function(image, priority) {
+    NewJob.call(this, image, priority);
+    IdStatus.call(this);
 
 
 
@@ -71,8 +72,8 @@
       if (data.hasOwnProperty('retry_of')) {
         obj['retry_of'] = ApiClient.convertToType(data['retry_of'], 'String');
       }
-      if (data.hasOwnProperty('retry_id')) {
-        obj['retry_id'] = ApiClient.convertToType(data['retry_id'], 'String');
+      if (data.hasOwnProperty('retry_at')) {
+        obj['retry_at'] = ApiClient.convertToType(data['retry_at'], 'String');
       }
     }
     return obj;
@@ -119,9 +120,9 @@
 
   /**
    * If this field is set, then this job was retried by the job referenced in this field.
-   * @member {String} retry_id
+   * @member {String} retry_at
    */
-  exports.prototype['retry_id'] = undefined;
+  exports.prototype['retry_at'] = undefined;
 
   // Implement IdStatus interface:
   /**

@@ -18,23 +18,23 @@
   /**
    * The NewJob model module.
    * @module model/NewJob
-   * @version 0.3.2
+   * @version 0.3.3
    */
 
   /**
    * Constructs a new <code>NewJob</code>.
    * @alias module:model/NewJob
    * @class
+   * @param image
+   * @param priority
    */
-  var exports = function() {
+  var exports = function(image, priority) {
+
+    this['image'] = image;
 
 
 
-
-
-
-
-
+    this['priority'] = priority;
 
 
   };
@@ -52,12 +52,6 @@
 
       if (data.hasOwnProperty('image')) {
         obj['image'] = ApiClient.convertToType(data['image'], 'String');
-      }
-      if (data.hasOwnProperty('username')) {
-        obj['username'] = ApiClient.convertToType(data['username'], 'String');
-      }
-      if (data.hasOwnProperty('password')) {
-        obj['password'] = ApiClient.convertToType(data['password'], 'String');
       }
       if (data.hasOwnProperty('payload')) {
         obj['payload'] = ApiClient.convertToType(data['payload'], 'String');
@@ -89,18 +83,6 @@
   exports.prototype['image'] = undefined;
 
   /**
-   * Username for private images
-   * @member {String} username
-   */
-  exports.prototype['username'] = undefined;
-
-  /**
-   * Password for private images
-   * @member {String} password
-   */
-  exports.prototype['password'] = undefined;
-
-  /**
    * Payload for the job. This is what you pass into each job to make it do something.
    * @member {String} payload
    */
@@ -123,16 +105,15 @@
   /**
    * Priority of the job. Higher has more priority. 3 levels from 0-2. Jobs at same priority are processed in FIFO order.
    * @member {Integer} priority
-   * @default 0
    */
-  exports.prototype['priority'] = 0;
+  exports.prototype['priority'] = undefined;
 
   /**
    * \"Number of automatic retries this job is allowed. A retry will be attempted if a task fails. Max 25. Automatic retries are performed by titan when a task reaches a failed state and has `max_retries` > 0. A retry is performed by queueing a new job with the same image id and payload. The new job's max_retries is one less than the original. The new job's `retry_of` field is set to the original Job ID.  Titan will delay the new job for retries_delay seconds before queueing it. Cancelled or successful tasks are never automatically retried.\"\n
    * @member {Integer} max_retries
-   * @default 3
+   * @default 0
    */
-  exports.prototype['max_retries'] = 3;
+  exports.prototype['max_retries'] = 0;
 
   /**
    * Time in seconds to wait before retrying the job. Must be a non-negative integer.
