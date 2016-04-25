@@ -17,7 +17,7 @@
 
   /**
    * @module ApiClient
-   * @version 0.3.3
+   * @version 0.3.5
    */
 
   /**
@@ -41,6 +41,7 @@
      */
     this.authentications = {
     };
+
     /**
      * The default HTTP headers to be included for all API calls.
      * @type {Array.<String>}

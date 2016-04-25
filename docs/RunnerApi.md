@@ -5,17 +5,17 @@ All URIs are relative to *https://localhost:8080/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**groupsGroupNameJobsIdErrorPost**](RunnerApi.md#groupsGroupNameJobsIdErrorPost) | **POST** /groups/{group_name}/jobs/{id}/error | Mark job as failed.
-[**groupsGroupNameJobsIdStartPost**](RunnerApi.md#groupsGroupNameJobsIdStartPost) | **POST** /groups/{group_name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
+[**groupsGroupNameJobsIdStartPost**](RunnerApi.md#groupsGroupNameJobsIdStartPost) | **POST** /groups/{group_name}/jobs/{id}/start | Mark job as started, ie: status = &#39;running&#39;
 [**groupsGroupNameJobsIdSuccessPost**](RunnerApi.md#groupsGroupNameJobsIdSuccessPost) | **POST** /groups/{group_name}/jobs/{id}/success | Mark job as succeeded.
 
 
 <a name="groupsGroupNameJobsIdErrorPost"></a>
 # **groupsGroupNameJobsIdErrorPost**
-> JobWrapper groupsGroupNameJobsIdErrorPost(groupName, id, reason)
+> JobWrapper groupsGroupNameJobsIdErrorPost(groupName, id, body)
 
 Mark job as failed.
 
-Job is marked as failed if it was in a valid state. Job&#39;s &#x60;finished_at&#x60; time is initialized.
+Job is marked as failed if it was in a valid state. Job&#39;s `finished_at` time is initialized.
 
 ### Example
 ```javascript
@@ -27,7 +27,7 @@ var groupName = "groupName_example"; // {String} Name of group for this set of j
 
 var id = "id_example"; // {String} Job id
 
-var reason = "reason_example"; // {String} Reason for job failure.
+var body = new IronTitan.Complete(); // {Complete} 
 
 
 var callback = function(error, data, response) {
@@ -37,7 +37,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsGroupNameJobsIdErrorPost(groupName, id, reason, callback);
+api.groupsGroupNameJobsIdErrorPost(groupName, id, body, callback);
 ```
 
 ### Parameters
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupName** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
- **reason** | **String**| Reason for job failure. | 
+ **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP request headers
+### HTTP reuqest headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -65,9 +65,9 @@ No authorization required
 # **groupsGroupNameJobsIdStartPost**
 > JobWrapper groupsGroupNameJobsIdStartPost(groupName, id, body)
 
-Mark job as started, ie: status &#x3D; &#39;running&#39;
+Mark job as started, ie: status = &#39;running&#39;
 
-Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s &#x60;started_at&#x60; time is initialized.
+Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s `started_at` time is initialized.
 
 ### Example
 ```javascript
@@ -108,18 +108,18 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP request headers
+### HTTP reuqest headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="groupsGroupNameJobsIdSuccessPost"></a>
 # **groupsGroupNameJobsIdSuccessPost**
-> JobWrapper groupsGroupNameJobsIdSuccessPost(groupName, id)
+> JobWrapper groupsGroupNameJobsIdSuccessPost(groupName, id, body)
 
 Mark job as succeeded.
 
-Job status is changed to succeeded if it was in a valid state before. Job&#39;s &#x60;completed_at&#x60; time is initialized.
+Job status is changed to succeeded if it was in a valid state before. Job&#39;s `completed_at` time is initialized.
 
 ### Example
 ```javascript
@@ -131,6 +131,8 @@ var groupName = "groupName_example"; // {String} Name of group for this set of j
 
 var id = "id_example"; // {String} Job id
 
+var body = new IronTitan.Complete(); // {Complete} 
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -139,7 +141,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsGroupNameJobsIdSuccessPost(groupName, id, callback);
+api.groupsGroupNameJobsIdSuccessPost(groupName, id, body, callback);
 ```
 
 ### Parameters
@@ -148,6 +150,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupName** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
+ **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
@@ -157,7 +160,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP request headers
+### HTTP reuqest headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json

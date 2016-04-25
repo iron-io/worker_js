@@ -18,7 +18,7 @@
   /**
    * Groups service.
    * @module api/GroupsApi
-   * @version 0.3.3
+   * @version 0.3.5
    */
 
   /**
@@ -112,6 +112,51 @@
 
       return this.apiClient.callApi(
         '/groups/{name}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the groupsPost operation.
+     * @callback module:api/GroupsApi~groupsPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/GroupWrapper} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Post new group
+     * Insert a new job group
+     * @param {module:model/GroupWrapper} body Group to post.
+     * @param {module:api/GroupsApi~groupsPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {module:model/GroupWrapper}
+     */
+    this.groupsPost = function(body, callback) {
+      var postBody = body;
+
+      // verify the required parameter 'body' is set
+      if (body == undefined || body == null) {
+        throw "Missing the required parameter 'body' when calling groupsPost";
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = GroupWrapper;
+
+      return this.apiClient.callApi(
+        '/groups', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

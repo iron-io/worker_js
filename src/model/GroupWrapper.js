@@ -18,7 +18,7 @@
   /**
    * The GroupWrapper model module.
    * @module model/GroupWrapper
-   * @version 0.3.3
+   * @version 0.3.5
    */
 
   /**

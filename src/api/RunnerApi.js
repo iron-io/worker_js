@@ -1,24 +1,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', '../model/Error', '../model/JobWrapper', '../model/IdStatus', '../model/Start'], factory);
+    define(['../ApiClient', '../model/Complete', '../model/Error', '../model/JobWrapper', '../model/IdStatus', '../model/Start'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Error'), require('../model/JobWrapper'), require('../model/IdStatus'), require('../model/Start'));
+    module.exports = factory(require('../ApiClient'), require('../model/Complete'), require('../model/Error'), require('../model/JobWrapper'), require('../model/IdStatus'), require('../model/Start'));
   } else {
     // Browser globals (root is window)
     if (!root.IronTitan) {
       root.IronTitan = {};
     }
-    root.IronTitan.RunnerApi = factory(root.IronTitan.ApiClient, root.IronTitan.Error, root.IronTitan.JobWrapper, root.IronTitan.IdStatus, root.IronTitan.Start);
+    root.IronTitan.RunnerApi = factory(root.IronTitan.ApiClient, root.IronTitan.Complete, root.IronTitan.Error, root.IronTitan.JobWrapper, root.IronTitan.IdStatus, root.IronTitan.Start);
   }
-}(this, function(ApiClient, Error, JobWrapper, IdStatus, Start) {
+}(this, function(ApiClient, Complete, Error, JobWrapper, IdStatus, Start) {
   'use strict';
 
   /**
    * Runner service.
    * @module api/RunnerApi
-   * @version 0.3.3
+   * @version 0.3.5
    */
 
   /**
@@ -42,15 +42,15 @@
 
     /**
      * Mark job as failed.
-     * Job is marked as failed if it was in a valid state. Job&#39;s &#x60;finished_at&#x60; time is initialized.
+     * Job is marked as failed if it was in a valid state. Job&#39;s `finished_at` time is initialized.
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
-     * @param {String} reason Reason for job failure.
+     * @param {module:model/Complete} body 
      * @param {module:api/RunnerApi~groupsGroupNameJobsIdErrorPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobWrapper}
      */
-    this.groupsGroupNameJobsIdErrorPost = function(groupName, id, reason, callback) {
-      var postBody = null;
+    this.groupsGroupNameJobsIdErrorPost = function(groupName, id, body, callback) {
+      var postBody = body;
 
       // verify the required parameter 'groupName' is set
       if (groupName == undefined || groupName == null) {
@@ -62,9 +62,9 @@
         throw "Missing the required parameter 'id' when calling groupsGroupNameJobsIdErrorPost";
       }
 
-      // verify the required parameter 'reason' is set
-      if (reason == undefined || reason == null) {
-        throw "Missing the required parameter 'reason' when calling groupsGroupNameJobsIdErrorPost";
+      // verify the required parameter 'body' is set
+      if (body == undefined || body == null) {
+        throw "Missing the required parameter 'body' when calling groupsGroupNameJobsIdErrorPost";
       }
 
 
@@ -77,7 +77,6 @@
       var headerParams = {
       };
       var formParams = {
-        'reason': reason
       };
 
       var authNames = [];
@@ -101,8 +100,8 @@
      */
 
     /**
-     * Mark job as started, ie: status &#x3D; &#39;running&#39;
-     * Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s &#x60;started_at&#x60; time is initialized.
+     * Mark job as started, ie: status = &#39;running&#39;
+     * Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s `started_at` time is initialized.
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Start} body 
@@ -161,14 +160,15 @@
 
     /**
      * Mark job as succeeded.
-     * Job status is changed to succeeded if it was in a valid state before. Job&#39;s &#x60;completed_at&#x60; time is initialized.
+     * Job status is changed to succeeded if it was in a valid state before. Job&#39;s `completed_at` time is initialized.
      * @param {String} groupName Name of group for this set of jobs.
      * @param {String} id Job id
+     * @param {module:model/Complete} body 
      * @param {module:api/RunnerApi~groupsGroupNameJobsIdSuccessPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobWrapper}
      */
-    this.groupsGroupNameJobsIdSuccessPost = function(groupName, id, callback) {
-      var postBody = null;
+    this.groupsGroupNameJobsIdSuccessPost = function(groupName, id, body, callback) {
+      var postBody = body;
 
       // verify the required parameter 'groupName' is set
       if (groupName == undefined || groupName == null) {
@@ -178,6 +178,11 @@
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
         throw "Missing the required parameter 'id' when calling groupsGroupNameJobsIdSuccessPost";
+      }
+
+      // verify the required parameter 'body' is set
+      if (body == undefined || body == null) {
+        throw "Missing the required parameter 'body' when calling groupsGroupNameJobsIdSuccessPost";
       }
 
 

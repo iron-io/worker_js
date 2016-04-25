@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**groupsGet**](GroupsApi.md#groupsGet) | **GET** /groups | Get all group names.
 [**groupsNameGet**](GroupsApi.md#groupsNameGet) | **GET** /groups/{name} | Get information for a group.
+[**groupsPost**](GroupsApi.md#groupsPost) | **POST** /groups | Post new group
 
 
 <a name="groupsGet"></a>
@@ -43,7 +44,7 @@ This endpoint does not need any parameter.
 
 No authorization required
 
-### HTTP request headers
+### HTTP reuqest headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -89,7 +90,53 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP request headers
+### HTTP reuqest headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="groupsPost"></a>
+# **groupsPost**
+> GroupWrapper groupsPost(body)
+
+Post new group
+
+Insert a new job group
+
+### Example
+```javascript
+var IronTitan = require('iron_titan');
+
+var apiInstance = new IronTitan.GroupsApi()
+
+var body = new IronTitan.GroupWrapper(); // {GroupWrapper} Group to post.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.groupsPost(body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GroupWrapper**](GroupWrapper.md)| Group to post. | 
+
+### Return type
+
+[**GroupWrapper**](GroupWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP reuqest headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json

@@ -1,12 +1,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['./ApiClient', './model/Error', './model/ErrorBody', './model/Group', './model/GroupWrapper', './model/GroupsWrapper', './model/IdStatus', './model/Job', './model/JobWrapper', './model/JobsWrapper', './model/NewJob', './model/NewJobsWrapper', './model/Reason', './model/Start', './api/GroupsApi', './api/JobsApi', './api/RunnerApi'], factory);
+    define(['./ApiClient', './model/Complete', './model/Error', './model/ErrorBody', './model/Group', './model/GroupWrapper', './model/GroupsWrapper', './model/IdStatus', './model/Job', './model/JobWrapper', './model/JobsWrapper', './model/NewJob', './model/NewJobsWrapper', './model/Start', './api/GroupsApi', './api/JobsApi', './api/RunnerApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Error'), require('./model/ErrorBody'), require('./model/Group'), require('./model/GroupWrapper'), require('./model/GroupsWrapper'), require('./model/IdStatus'), require('./model/Job'), require('./model/JobWrapper'), require('./model/JobsWrapper'), require('./model/NewJob'), require('./model/NewJobsWrapper'), require('./model/Reason'), require('./model/Start'), require('./api/GroupsApi'), require('./api/JobsApi'), require('./api/RunnerApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Complete'), require('./model/Error'), require('./model/ErrorBody'), require('./model/Group'), require('./model/GroupWrapper'), require('./model/GroupsWrapper'), require('./model/IdStatus'), require('./model/Job'), require('./model/JobWrapper'), require('./model/JobsWrapper'), require('./model/NewJob'), require('./model/NewJobsWrapper'), require('./model/Start'), require('./api/GroupsApi'), require('./api/JobsApi'), require('./api/RunnerApi'));
   }
-}(function(ApiClient, Error, ErrorBody, Group, GroupWrapper, GroupsWrapper, IdStatus, Job, JobWrapper, JobsWrapper, NewJob, NewJobsWrapper, Reason, Start, GroupsApi, JobsApi, RunnerApi) {
+}(function(ApiClient, Complete, Error, ErrorBody, Group, GroupWrapper, GroupsWrapper, IdStatus, Job, JobWrapper, JobsWrapper, NewJob, NewJobsWrapper, Start, GroupsApi, JobsApi, RunnerApi) {
   'use strict';
 
   /**
@@ -38,7 +38,7 @@
    * </pre>
    * </p>
    * @module index
-   * @version 0.3.3
+   * @version 0.3.5
    */
   var exports = {
     /**
@@ -46,6 +46,11 @@
      * @property {module:ApiClient}
      */
     ApiClient: ApiClient,
+    /**
+     * The Complete model constructor.
+     * @property {module:model/Complete}
+     */
+    Complete: Complete,
     /**
      * The Error model constructor.
      * @property {module:model/Error}
@@ -101,11 +106,6 @@
      * @property {module:model/NewJobsWrapper}
      */
     NewJobsWrapper: NewJobsWrapper,
-    /**
-     * The Reason model constructor.
-     * @property {module:model/Reason}
-     */
-    Reason: Reason,
     /**
      * The Start model constructor.
      * @property {module:model/Start}

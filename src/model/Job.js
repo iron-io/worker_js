@@ -1,24 +1,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './IdStatus', './NewJob', './Reason'], factory);
+    define(['../ApiClient', './IdStatus', './NewJob'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('./IdStatus'), require('./NewJob'), require('./Reason'));
+    module.exports = factory(require('../ApiClient'), require('./IdStatus'), require('./NewJob'));
   } else {
     // Browser globals (root is window)
     if (!root.IronTitan) {
       root.IronTitan = {};
     }
-    root.IronTitan.Job = factory(root.IronTitan.ApiClient, root.IronTitan.IdStatus, root.IronTitan.NewJob, root.IronTitan.Reason);
+    root.IronTitan.Job = factory(root.IronTitan.ApiClient, root.IronTitan.IdStatus, root.IronTitan.NewJob);
   }
-}(this, function(ApiClient, IdStatus, NewJob, Reason) {
+}(this, function(ApiClient, IdStatus, NewJob) {
   'use strict';
 
   /**
    * The Job model module.
    * @module model/Job
-   * @version 0.3.3
+   * @version 0.3.5
    */
 
   /**
@@ -33,6 +33,7 @@
   var exports = function(image, priority) {
     NewJob.call(this, image, priority);
     IdStatus.call(this);
+
 
 
 
@@ -57,8 +58,11 @@
       if (data.hasOwnProperty('group_name')) {
         obj['group_name'] = ApiClient.convertToType(data['group_name'], 'String');
       }
+      if (data.hasOwnProperty('error')) {
+        obj['error'] = ApiClient.convertToType(data['error'], 'String');
+      }
       if (data.hasOwnProperty('reason')) {
-        obj['reason'] = Reason.constructFromObject(data['reason']);
+        obj['reason'] = ApiClient.convertToType(data['reason'], 'String');
       }
       if (data.hasOwnProperty('created_at')) {
         obj['created_at'] = ApiClient.convertToType(data['created_at'], 'Date');
@@ -90,7 +94,14 @@
   exports.prototype['group_name'] = undefined;
 
   /**
-   * @member {module:model/Reason} reason
+   * The error message, if status is 'error'. This is errors due to things outside the job itself. Errors from user code will be found in the log.
+   * @member {String} error
+   */
+  exports.prototype['error'] = undefined;
+
+  /**
+   * Machine usable reason for job being in this state.\nValid values for error status are `timeout | killed | bad_exit`.\nValid values for cancelled status are `client_request`.\nFor everything else, this is undefined.\n
+   * @member {module:model/Job.ReasonEnum} reason
    */
   exports.prototype['reason'] = undefined;
 
@@ -138,7 +149,36 @@
   exports.prototype['status'] = undefined;
 
 
-
+  /**
+   * Allowed values for the <code>reason</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.ReasonEnum = { 
+    /**
+     * value: timeout
+     * @const
+     */
+    TIMEOUT: "timeout",
+    
+    /**
+     * value: killed
+     * @const
+     */
+    KILLED: "killed",
+    
+    /**
+     * value: bad_exit
+     * @const
+     */
+    BAD_EXIT: "bad_exit",
+    
+    /**
+     * value: client_request
+     * @const
+     */
+    CLIENT_REQUEST: "client_request"
+  };
 
   return exports;
 }));
