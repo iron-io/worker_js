@@ -18,7 +18,7 @@
   /**
    * The Job model module.
    * @module model/Job
-   * @version 0.3.7
+   * @version 0.3.8
    */
 
   /**
@@ -55,8 +55,8 @@
       obj = obj || new exports();
       NewJob.constructFromObject(data, obj);
       IdStatus.constructFromObject(data, obj);
-      if (data.hasOwnProperty('group_name')) {
-        obj['group_name'] = ApiClient.convertToType(data['group_name'], 'String');
+      if (data.hasOwnProperty('name')) {
+        obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
       if (data.hasOwnProperty('error')) {
         obj['error'] = ApiClient.convertToType(data['error'], 'String');
@@ -89,9 +89,9 @@
 
   /**
    * Group this job belongs to. 
-   * @member {String} group_name
+   * @member {String} name
    */
-  exports.prototype['group_name'] = undefined;
+  exports.prototype['name'] = undefined;
 
   /**
    * The error message, if status is 'error'. This is errors due to things outside the job itself. Errors from user code will be found in the log.

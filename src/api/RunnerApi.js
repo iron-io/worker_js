@@ -18,7 +18,7 @@
   /**
    * Runner service.
    * @module api/RunnerApi
-   * @version 0.3.7
+   * @version 0.3.8
    */
 
   /**
@@ -33,8 +33,8 @@
 
 
     /**
-     * Callback function to receive the result of the groupsGroupNameJobsIdErrorPost operation.
-     * @callback module:api/RunnerApi~groupsGroupNameJobsIdErrorPostCallback
+     * Callback function to receive the result of the groupsNameJobsIdErrorPost operation.
+     * @callback module:api/RunnerApi~groupsNameJobsIdErrorPostCallback
      * @param {String} error Error message, if any.
      * @param {module:model/JobWrapper} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -43,33 +43,33 @@
     /**
      * Mark job as failed.
      * Job is marked as failed if it was in a valid state. Job&#39;s `finished_at` time is initialized.
-     * @param {String} groupName Name of group for this set of jobs.
+     * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Complete} body 
-     * @param {module:api/RunnerApi~groupsGroupNameJobsIdErrorPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/RunnerApi~groupsNameJobsIdErrorPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobWrapper}
      */
-    this.groupsGroupNameJobsIdErrorPost = function(groupName, id, body, callback) {
+    this.groupsNameJobsIdErrorPost = function(name, id, body, callback) {
       var postBody = body;
 
-      // verify the required parameter 'groupName' is set
-      if (groupName == undefined || groupName == null) {
-        throw "Missing the required parameter 'groupName' when calling groupsGroupNameJobsIdErrorPost";
+      // verify the required parameter 'name' is set
+      if (name == undefined || name == null) {
+        throw "Missing the required parameter 'name' when calling groupsNameJobsIdErrorPost";
       }
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw "Missing the required parameter 'id' when calling groupsGroupNameJobsIdErrorPost";
+        throw "Missing the required parameter 'id' when calling groupsNameJobsIdErrorPost";
       }
 
       // verify the required parameter 'body' is set
       if (body == undefined || body == null) {
-        throw "Missing the required parameter 'body' when calling groupsGroupNameJobsIdErrorPost";
+        throw "Missing the required parameter 'body' when calling groupsNameJobsIdErrorPost";
       }
 
 
       var pathParams = {
-        'group_name': groupName,
+        'name': name,
         'id': id
       };
       var queryParams = {
@@ -85,15 +85,15 @@
       var returnType = JobWrapper;
 
       return this.apiClient.callApi(
-        '/groups/{group_name}/jobs/{id}/error', 'POST',
+        '/groups/{name}/jobs/{id}/error', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the groupsGroupNameJobsIdStartPost operation.
-     * @callback module:api/RunnerApi~groupsGroupNameJobsIdStartPostCallback
+     * Callback function to receive the result of the groupsNameJobsIdStartPost operation.
+     * @callback module:api/RunnerApi~groupsNameJobsIdStartPostCallback
      * @param {String} error Error message, if any.
      * @param {module:model/JobWrapper} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -102,33 +102,33 @@
     /**
      * Mark job as started, ie: status = &#39;running&#39;
      * Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s `started_at` time is initialized.
-     * @param {String} groupName Name of group for this set of jobs.
+     * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Start} body 
-     * @param {module:api/RunnerApi~groupsGroupNameJobsIdStartPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/RunnerApi~groupsNameJobsIdStartPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobWrapper}
      */
-    this.groupsGroupNameJobsIdStartPost = function(groupName, id, body, callback) {
+    this.groupsNameJobsIdStartPost = function(name, id, body, callback) {
       var postBody = body;
 
-      // verify the required parameter 'groupName' is set
-      if (groupName == undefined || groupName == null) {
-        throw "Missing the required parameter 'groupName' when calling groupsGroupNameJobsIdStartPost";
+      // verify the required parameter 'name' is set
+      if (name == undefined || name == null) {
+        throw "Missing the required parameter 'name' when calling groupsNameJobsIdStartPost";
       }
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw "Missing the required parameter 'id' when calling groupsGroupNameJobsIdStartPost";
+        throw "Missing the required parameter 'id' when calling groupsNameJobsIdStartPost";
       }
 
       // verify the required parameter 'body' is set
       if (body == undefined || body == null) {
-        throw "Missing the required parameter 'body' when calling groupsGroupNameJobsIdStartPost";
+        throw "Missing the required parameter 'body' when calling groupsNameJobsIdStartPost";
       }
 
 
       var pathParams = {
-        'group_name': groupName,
+        'name': name,
         'id': id
       };
       var queryParams = {
@@ -144,15 +144,15 @@
       var returnType = JobWrapper;
 
       return this.apiClient.callApi(
-        '/groups/{group_name}/jobs/{id}/start', 'POST',
+        '/groups/{name}/jobs/{id}/start', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the groupsGroupNameJobsIdSuccessPost operation.
-     * @callback module:api/RunnerApi~groupsGroupNameJobsIdSuccessPostCallback
+     * Callback function to receive the result of the groupsNameJobsIdSuccessPost operation.
+     * @callback module:api/RunnerApi~groupsNameJobsIdSuccessPostCallback
      * @param {String} error Error message, if any.
      * @param {module:model/JobWrapper} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
@@ -161,33 +161,33 @@
     /**
      * Mark job as succeeded.
      * Job status is changed to succeeded if it was in a valid state before. Job&#39;s `completed_at` time is initialized.
-     * @param {String} groupName Name of group for this set of jobs.
+     * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Complete} body 
-     * @param {module:api/RunnerApi~groupsGroupNameJobsIdSuccessPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * @param {module:api/RunnerApi~groupsNameJobsIdSuccessPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobWrapper}
      */
-    this.groupsGroupNameJobsIdSuccessPost = function(groupName, id, body, callback) {
+    this.groupsNameJobsIdSuccessPost = function(name, id, body, callback) {
       var postBody = body;
 
-      // verify the required parameter 'groupName' is set
-      if (groupName == undefined || groupName == null) {
-        throw "Missing the required parameter 'groupName' when calling groupsGroupNameJobsIdSuccessPost";
+      // verify the required parameter 'name' is set
+      if (name == undefined || name == null) {
+        throw "Missing the required parameter 'name' when calling groupsNameJobsIdSuccessPost";
       }
 
       // verify the required parameter 'id' is set
       if (id == undefined || id == null) {
-        throw "Missing the required parameter 'id' when calling groupsGroupNameJobsIdSuccessPost";
+        throw "Missing the required parameter 'id' when calling groupsNameJobsIdSuccessPost";
       }
 
       // verify the required parameter 'body' is set
       if (body == undefined || body == null) {
-        throw "Missing the required parameter 'body' when calling groupsGroupNameJobsIdSuccessPost";
+        throw "Missing the required parameter 'body' when calling groupsNameJobsIdSuccessPost";
       }
 
 
       var pathParams = {
-        'group_name': groupName,
+        'name': name,
         'id': id
       };
       var queryParams = {
@@ -203,7 +203,7 @@
       var returnType = JobWrapper;
 
       return this.apiClient.callApi(
-        '/groups/{group_name}/jobs/{id}/success', 'POST',
+        '/groups/{name}/jobs/{id}/success', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

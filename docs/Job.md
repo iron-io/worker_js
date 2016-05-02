@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**groupName** | **String** | Group this job belongs to.  | [optional] 
+**name** | **String** | Group this job belongs to.  | [optional] 
 **error** | **String** | The error message, if status is &#39;error&#39;. This is errors due to things outside the job itself. Errors from user code will be found in the log. | [optional] 
 **reason** | **String** | Machine usable reason for job being in this state.\nValid values for error status are `timeout | killed | bad_exit`.\nValid values for cancelled status are `client_request`.\nFor everything else, this is undefined.\n | [optional] 
 **createdAt** | **Date** | Time when job was submitted. Always in UTC. | [optional] 

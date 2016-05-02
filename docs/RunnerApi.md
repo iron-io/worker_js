@@ -4,14 +4,14 @@ All URIs are relative to *https://localhost:8080/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**groupsGroupNameJobsIdErrorPost**](RunnerApi.md#groupsGroupNameJobsIdErrorPost) | **POST** /groups/{group_name}/jobs/{id}/error | Mark job as failed.
-[**groupsGroupNameJobsIdStartPost**](RunnerApi.md#groupsGroupNameJobsIdStartPost) | **POST** /groups/{group_name}/jobs/{id}/start | Mark job as started, ie: status = &#39;running&#39;
-[**groupsGroupNameJobsIdSuccessPost**](RunnerApi.md#groupsGroupNameJobsIdSuccessPost) | **POST** /groups/{group_name}/jobs/{id}/success | Mark job as succeeded.
+[**groupsNameJobsIdErrorPost**](RunnerApi.md#groupsNameJobsIdErrorPost) | **POST** /groups/{name}/jobs/{id}/error | Mark job as failed.
+[**groupsNameJobsIdStartPost**](RunnerApi.md#groupsNameJobsIdStartPost) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status = &#39;running&#39;
+[**groupsNameJobsIdSuccessPost**](RunnerApi.md#groupsNameJobsIdSuccessPost) | **POST** /groups/{name}/jobs/{id}/success | Mark job as succeeded.
 
 
-<a name="groupsGroupNameJobsIdErrorPost"></a>
-# **groupsGroupNameJobsIdErrorPost**
-> JobWrapper groupsGroupNameJobsIdErrorPost(groupName, id, body)
+<a name="groupsNameJobsIdErrorPost"></a>
+# **groupsNameJobsIdErrorPost**
+> JobWrapper groupsNameJobsIdErrorPost(name, id, body)
 
 Mark job as failed.
 
@@ -23,7 +23,7 @@ var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.RunnerApi()
 
-var groupName = "groupName_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // {String} Name of group for this set of jobs.
 
 var id = "id_example"; // {String} Job id
 
@@ -37,14 +37,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsGroupNameJobsIdErrorPost(groupName, id, body, callback);
+api.groupsNameJobsIdErrorPost(name, id, body, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupName** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
  **body** | [**Complete**](Complete.md)|  | 
 
@@ -61,9 +61,9 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="groupsGroupNameJobsIdStartPost"></a>
-# **groupsGroupNameJobsIdStartPost**
-> JobWrapper groupsGroupNameJobsIdStartPost(groupName, id, body)
+<a name="groupsNameJobsIdStartPost"></a>
+# **groupsNameJobsIdStartPost**
+> JobWrapper groupsNameJobsIdStartPost(name, id, body)
 
 Mark job as started, ie: status = &#39;running&#39;
 
@@ -75,7 +75,7 @@ var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.RunnerApi()
 
-var groupName = "groupName_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // {String} Name of group for this set of jobs.
 
 var id = "id_example"; // {String} Job id
 
@@ -89,14 +89,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsGroupNameJobsIdStartPost(groupName, id, body, callback);
+api.groupsNameJobsIdStartPost(name, id, body, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupName** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
  **body** | [**Start**](Start.md)|  | 
 
@@ -113,9 +113,9 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="groupsGroupNameJobsIdSuccessPost"></a>
-# **groupsGroupNameJobsIdSuccessPost**
-> JobWrapper groupsGroupNameJobsIdSuccessPost(groupName, id, body)
+<a name="groupsNameJobsIdSuccessPost"></a>
+# **groupsNameJobsIdSuccessPost**
+> JobWrapper groupsNameJobsIdSuccessPost(name, id, body)
 
 Mark job as succeeded.
 
@@ -127,7 +127,7 @@ var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.RunnerApi()
 
-var groupName = "groupName_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // {String} Name of group for this set of jobs.
 
 var id = "id_example"; // {String} Job id
 
@@ -141,14 +141,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsGroupNameJobsIdSuccessPost(groupName, id, body, callback);
+api.groupsNameJobsIdSuccessPost(name, id, body, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupName** | **String**| Name of group for this set of jobs. | 
+ **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
  **body** | [**Complete**](Complete.md)|  | 
 
