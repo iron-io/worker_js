@@ -18,7 +18,7 @@
   /**
    * The JobsWrapper model module.
    * @module model/JobsWrapper
-   * @version 0.3.8
+   * @version 0.3.10
    */
 
   /**

@@ -18,7 +18,7 @@
   /**
    * The Group model module.
    * @module model/Group
-   * @version 0.3.8
+   * @version 0.3.10
    */
 
   /**
