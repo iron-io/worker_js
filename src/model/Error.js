@@ -1,7 +1,7 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './ErrorBody'], factory);
+    define(['ApiClient', 'model/ErrorBody'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('../ApiClient'), require('./ErrorBody'));
@@ -15,6 +15,9 @@
 }(this, function(ApiClient, ErrorBody) {
   'use strict';
 
+
+
+
   /**
    * The Error model module.
    * @module model/Error
@@ -27,6 +30,7 @@
    * @class
    */
   var exports = function() {
+    var _this = this;
 
 
   };
@@ -39,7 +43,7 @@
    * @return {module:model/Error} The populated <code>Error</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
-    if (data) { 
+    if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('error')) {
@@ -48,7 +52,6 @@
     }
     return obj;
   }
-
 
   /**
    * @member {module:model/ErrorBody} error
@@ -60,3 +63,5 @@
 
   return exports;
 }));
+
+

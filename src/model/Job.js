@@ -1,7 +1,7 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './IdStatus', './NewJob'], factory);
+    define(['ApiClient', 'model/IdStatus', 'model/NewJob'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('../ApiClient'), require('./IdStatus'), require('./NewJob'));
@@ -14,6 +14,9 @@
   }
 }(this, function(ApiClient, IdStatus, NewJob) {
   'use strict';
+
+
+
 
   /**
    * The Job model module.
@@ -31,8 +34,10 @@
    * @param priority
    */
   var exports = function(image, priority) {
-    NewJob.call(this, image, priority);
-    IdStatus.call(this);
+    var _this = this;
+    NewJob.call(_this, image, priority);
+    IdStatus.call(_this);
+
 
 
 
@@ -51,12 +56,12 @@
    * @return {module:model/Job} The populated <code>Job</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
-    if (data) { 
+    if (data) {
       obj = obj || new exports();
       NewJob.constructFromObject(data, obj);
       IdStatus.constructFromObject(data, obj);
-      if (data.hasOwnProperty('name')) {
-        obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('group_name')) {
+        obj['group_name'] = ApiClient.convertToType(data['group_name'], 'String');
       }
       if (data.hasOwnProperty('error')) {
         obj['error'] = ApiClient.convertToType(data['error'], 'String');
@@ -79,6 +84,9 @@
       if (data.hasOwnProperty('retry_at')) {
         obj['retry_at'] = ApiClient.convertToType(data['retry_at'], 'String');
       }
+      if (data.hasOwnProperty('env_vars')) {
+        obj['env_vars'] = ApiClient.convertToType(data['env_vars'], {'String': 'String'});
+      }
     }
     return obj;
   }
@@ -86,67 +94,64 @@
   exports.prototype = Object.create(NewJob.prototype);
   exports.prototype.constructor = exports;
 
-
   /**
-   * Group this job belongs to. 
-   * @member {String} name
+   * Group this job belongs to.
+   * @member {String} group_name
    */
-  exports.prototype['name'] = undefined;
-
+  exports.prototype['group_name'] = undefined;
   /**
    * The error message, if status is 'error'. This is errors due to things outside the job itself. Errors from user code will be found in the log.
    * @member {String} error
    */
   exports.prototype['error'] = undefined;
-
   /**
-   * Machine usable reason for job being in this state.\nValid values for error status are `timeout | killed | bad_exit`.\nValid values for cancelled status are `client_request`.\nFor everything else, this is undefined.\n
+   * Machine usable reason for job being in this state. Valid values for error status are `timeout | killed | bad_exit`. Valid values for cancelled status are `client_request`. For everything else, this is undefined. 
    * @member {module:model/Job.ReasonEnum} reason
    */
   exports.prototype['reason'] = undefined;
-
   /**
    * Time when job was submitted. Always in UTC.
    * @member {Date} created_at
    */
   exports.prototype['created_at'] = undefined;
-
   /**
    * Time when job started execution. Always in UTC.
    * @member {Date} started_at
    */
   exports.prototype['started_at'] = undefined;
-
   /**
    * Time when job completed, whether it was successul or failed. Always in UTC.
    * @member {Date} completed_at
    */
   exports.prototype['completed_at'] = undefined;
-
   /**
    * If this field is set, then this job is a retry of the ID in this field.
    * @member {String} retry_of
    */
   exports.prototype['retry_of'] = undefined;
-
   /**
    * If this field is set, then this job was retried by the job referenced in this field.
    * @member {String} retry_at
    */
   exports.prototype['retry_at'] = undefined;
+  /**
+   * Env vars for the task. Comes from the ones set on the Group.
+   * @member {Object.<String, String>} env_vars
+   */
+  exports.prototype['env_vars'] = undefined;
 
   // Implement IdStatus interface:
   /**
    * Unique identifier representing a specific job.
    * @member {String} id
    */
-  exports.prototype['id'] = undefined;
+exports.prototype['id'] = undefined;
 
   /**
-   * States and valid transitions.\n\n                 +---------+\n       +---------> delayed <----------------+\n                 +----+----+                |\n                      |                     |\n                      |                     |\n                 +----v----+                |\n       +---------> queued  <----------------+\n                 +----+----+                *\n                      |                     *\n                      |               retry * creates new job\n                 +----v----+                *\n                 | running |                *\n                 +--+-+-+--+                |\n          +---------|-|-|-----+-------------+\n      +---|---------+ | +-----|---------+   |\n      |   |           |       |         |   |\n+-----v---^-+      +--v-------^+     +--v---^-+\n| success   |      | cancelled |     |  error |\n+-----------+      +-----------+     +--------+\n\n* delayed - has a delay.\n* queued - Ready to be consumed when it's turn comes.\n* running - Currently consumed by a runner which will attempt to process it.\n* success - (or complete? success/error is common javascript terminology)\n* error - Something went wrong. In this case more information can be obtained\n  by inspecting the \"reason\" field.\n  - timeout\n  - killed - forcibly killed by worker due to resource restrictions or access\n    violations.\n  - bad_exit - exited with non-zero status due to program termination/crash.\n* cancelled - cancelled via API. More information in the reason field.\n  - client_request - Request was cancelled by a client.\n
+   * States and valid transitions.                   +---------+        +---------> delayed <----------------+                  +----+----+                |                       |                     |                       |                     |                  +----v----+                |        +---------> queued  <----------------+                  +----+----+                *                       |                     *                       |               retry * creates new job                  +----v----+                *                  | running |                *                  +--+-+-+--+                |           +---------|-|-|-----+-------------+       +---|---------+ | +-----|---------+   |       |   |           |       |         |   | +-----v---^-+      +--v-------^+     +--v---^-+ | success   |      | cancelled |     |  error | +-----------+      +-----------+     +--------+  * delayed - has a delay. * queued - Ready to be consumed when it's turn comes. * running - Currently consumed by a runner which will attempt to process it. * success - (or complete? success/error is common javascript terminology) * error - Something went wrong. In this case more information can be obtained   by inspecting the \"reason\" field.   - timeout   - killed - forcibly killed by worker due to resource restrictions or access     violations.   - bad_exit - exited with non-zero status due to program termination/crash. * cancelled - cancelled via API. More information in the reason field.   - client_request - Request was cancelled by a client. 
    * @member {module:model/IdStatus.StatusEnum} status
    */
-  exports.prototype['status'] = undefined;
+exports.prototype['status'] = undefined;
 
 
   /**
@@ -154,31 +159,30 @@
    * @enum {String}
    * @readonly
    */
-  exports.ReasonEnum = { 
+  exports.ReasonEnum = {
     /**
-     * value: timeout
+     * value: "timeout"
      * @const
      */
-    TIMEOUT: "timeout",
-    
+    "timeout": "timeout",
     /**
-     * value: killed
+     * value: "killed"
      * @const
      */
-    KILLED: "killed",
-    
+    "killed": "killed",
     /**
-     * value: bad_exit
+     * value: "bad_exit"
      * @const
      */
-    BAD_EXIT: "bad_exit",
-    
+    "bad_exit": "bad_exit",
     /**
-     * value: client_request
+     * value: "client_request"
      * @const
      */
-    CLIENT_REQUEST: "client_request"
-  };
+    "client_request": "client_request"  };
+
 
   return exports;
 }));
+
+

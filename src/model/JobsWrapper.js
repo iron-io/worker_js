@@ -1,7 +1,7 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './ErrorBody', './Job'], factory);
+    define(['ApiClient', 'model/ErrorBody', 'model/Job'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('../ApiClient'), require('./ErrorBody'), require('./Job'));
@@ -14,6 +14,9 @@
   }
 }(this, function(ApiClient, ErrorBody, Job) {
   'use strict';
+
+
+
 
   /**
    * The JobsWrapper model module.
@@ -28,8 +31,9 @@
    * @param jobs
    */
   var exports = function(jobs) {
+    var _this = this;
 
-    this['jobs'] = jobs;
+    _this['jobs'] = jobs;
 
   };
 
@@ -41,7 +45,7 @@
    * @return {module:model/JobsWrapper} The populated <code>JobsWrapper</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
-    if (data) { 
+    if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('jobs')) {
@@ -54,12 +58,10 @@
     return obj;
   }
 
-
   /**
    * @member {Array.<module:model/Job>} jobs
    */
   exports.prototype['jobs'] = undefined;
-
   /**
    * @member {module:model/ErrorBody} error
    */
@@ -70,3 +72,5 @@
 
   return exports;
 }));
+
+

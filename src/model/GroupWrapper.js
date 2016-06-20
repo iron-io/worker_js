@@ -1,7 +1,7 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './Group'], factory);
+    define(['ApiClient', 'model/Group'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('../ApiClient'), require('./Group'));
@@ -14,6 +14,9 @@
   }
 }(this, function(ApiClient, Group) {
   'use strict';
+
+
+
 
   /**
    * The GroupWrapper model module.
@@ -28,8 +31,9 @@
    * @param group
    */
   var exports = function(group) {
+    var _this = this;
 
-    this['group'] = group;
+    _this['group'] = group;
   };
 
   /**
@@ -40,7 +44,7 @@
    * @return {module:model/GroupWrapper} The populated <code>GroupWrapper</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
-    if (data) { 
+    if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('group')) {
@@ -49,7 +53,6 @@
     }
     return obj;
   }
-
 
   /**
    * @member {module:model/Group} group
@@ -61,3 +64,5 @@
 
   return exports;
 }));
+
+

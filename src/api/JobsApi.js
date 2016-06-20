@@ -1,7 +1,7 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', '../model/JobsWrapper', '../model/Error', '../model/JobWrapper', '../model/IdStatus', '../model/Complete', '../model/Start', '../model/NewJobsWrapper'], factory);
+    define(['ApiClient', 'model/JobsWrapper', 'model/Error', 'model/JobWrapper', 'model/IdStatus', 'model/Complete', 'model/Start', 'model/NewJobsWrapper'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('../ApiClient'), require('../model/JobsWrapper'), require('../model/Error'), require('../model/JobWrapper'), require('../model/IdStatus'), require('../model/Complete'), require('../model/Start'), require('../model/NewJobsWrapper'));
@@ -25,8 +25,8 @@
    * Constructs a new JobsApi. 
    * @alias module:api/JobsApi
    * @class
-   * @param {module:ApiClient} apiClient Optional API client implementation to use, default to {@link module:ApiClient#instance}
-   * if unspecified.
+   * @param {module:ApiClient} apiClient Optional API client implementation to use,
+   * default to {@link module:ApiClient#instance} if unspecified.
    */
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
@@ -94,7 +94,7 @@
 
     /**
      * Cancel a job.
-     * Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to `client_request`. The job&#39;s completed_at field is set to the current time on the jobserver.
+     * Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to &#x60;client_request&#x60;. The job&#39;s completed_at field is set to the current time on the jobserver.
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:api/JobsApi~groupsNameJobsIdCancelPostCallback} callback The callback function, accepting three arguments: error, data, response
@@ -147,7 +147,7 @@
 
     /**
      * Delete the job.
-     * Delete only succeeds if job status is one of `succeeded\n| failed | cancelled`. Cancel a job if it is another state and needs to\nbe deleted.  All information about the job, including the log, is\nirretrievably lost when this is invoked.\n
+     * Delete only succeeds if job status is one of &#x60;succeeded | failed | cancelled&#x60;. Cancel a job if it is another state and needs to be deleted.  All information about the job, including the log, is irretrievably lost when this is invoked. 
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:api/JobsApi~groupsNameJobsIdDeleteCallback} callback The callback function, accepting three arguments: error, data, response
@@ -199,7 +199,7 @@
 
     /**
      * Mark job as failed.
-     * Job is marked as failed if it was in a valid state. Job&#39;s `finished_at` time is initialized.
+     * Job is marked as failed if it was in a valid state. Job&#39;s &#x60;finished_at&#x60; time is initialized.
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Complete} body 
@@ -367,7 +367,7 @@
      * Logs are sent after a job completes since they may be very large and the runner can process the next job.
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
-     * @param {File} log Output log for the job. Content-Type must be \&quot;text/plain; charset=utf-8\&quot;.
+     * @param {File} log Output log for the job. Content-Type must be \&quot;text/plain; charset&#x3D;utf-8\&quot;.
      * @param {module:api/JobsApi~groupsNameJobsIdLogPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobWrapper}
      */
@@ -424,7 +424,7 @@
 
     /**
      * Retry a job.
-     * \&quot;The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries = 0.\&quot;\n
+     * \&quot;The /retry endpoint can be used to force a retry of jobs with status succeeded or cancelled. It can also be used to retry jobs that in the failed state, but whose max_retries field is 0. The retried job will continue to have max_retries &#x3D; 0.\&quot; 
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:api/JobsApi~groupsNameJobsIdRetryPostCallback} callback The callback function, accepting three arguments: error, data, response
@@ -476,8 +476,8 @@
      */
 
     /**
-     * Mark job as started, ie: status = &#39;running&#39;
-     * Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s `started_at` time is initialized.
+     * Mark job as started, ie: status &#x3D; &#39;running&#39;
+     * Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s &#x60;started_at&#x60; time is initialized.
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Start} body 
@@ -536,7 +536,7 @@
 
     /**
      * Mark job as succeeded.
-     * Job status is changed to succeeded if it was in a valid state before. Job&#39;s `completed_at` time is initialized.
+     * Job status is changed to succeeded if it was in a valid state before. Job&#39;s &#x60;completed_at&#x60; time is initialized.
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Complete} body 
@@ -595,7 +595,7 @@
 
     /**
      * Extend job timeout.
-     * Consumers can sometimes take a while to run the task after accepting it.  An example is when the runner does not have the docker image locally, it can spend a significant time downloading the image.\nIf the timeout is small, the job may never get to run, or run but not be accepted by Titan. Consumers can touch the job before it times out. Titan will reset the timeout, giving the consumer another timeout seconds to run the job.\nTouch is only valid while the job is in a running state. If touch fails, the runner may stop running the job.\n
+     * Consumers can sometimes take a while to run the task after accepting it.  An example is when the runner does not have the docker image locally, it can spend a significant time downloading the image. If the timeout is small, the job may never get to run, or run but not be accepted by Titan. Consumers can touch the job before it times out. Titan will reset the timeout, giving the consumer another timeout seconds to run the job. Touch is only valid while the job is in a running state. If touch fails, the runner may stop running the job. 
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:api/JobsApi~groupsNameJobsIdTouchPostCallback} callback The callback function, accepting three arguments: error, data, response
@@ -647,7 +647,7 @@
 
     /**
      * Enqueue Job
-     * Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued.\n
+     * Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued. 
      * @param {String} name name of the group.
      * @param {module:model/NewJobsWrapper} body Array of jobs to post.
      * @param {module:api/JobsApi~groupsNameJobsPostCallback} callback The callback function, accepting three arguments: error, data, response
@@ -699,7 +699,7 @@
 
     /**
      * Get next job.
-     * Gets the next job in the queue, ready for processing. Titan may return &lt;=n jobs. Consumers should start processing jobs in order. Each returned job is set to `status` \&quot;running\&quot; and `started_at` is set to the current time. No other consumer can retrieve this job.
+     * Gets the next job in the queue, ready for processing. Titan may return &lt;&#x3D;n jobs. Consumers should start processing jobs in order. Each returned job is set to &#x60;status&#x60; \&quot;running\&quot; and &#x60;started_at&#x60; is set to the current time. No other consumer can retrieve this job.
      * @param {Object} opts Optional parameters
      * @param {Integer} opts.n Number of jobs to return. (default to 1)
      * @param {module:api/JobsApi~jobsGetCallback} callback The callback function, accepting three arguments: error, data, response

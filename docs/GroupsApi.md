@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="groupsGet"></a>
 # **groupsGet**
-> GroupsWrapper groupsGet
+> GroupsWrapper groupsGet()
 
 Get all group names.
 
@@ -21,7 +21,7 @@ Get a list of all the groups in the system.
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.GroupsApi()
+var apiInstance = new IronTitan.GroupsApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -30,7 +30,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsGet(callback);
+apiInstance.groupsGet(callback);
 ```
 
 ### Parameters
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -61,9 +61,9 @@ This gives more details about a job group, such as statistics.
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.GroupsApi()
+var apiInstance = new IronTitan.GroupsApi();
 
-var name = "name_example"; // {String} name of the group.
+var name = "name_example"; // String | name of the group.
 
 
 var callback = function(error, data, response) {
@@ -73,7 +73,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameGet(name, callback);
+apiInstance.groupsNameGet(name, callback);
 ```
 
 ### Parameters
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -107,9 +107,9 @@ Insert a new job group
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.GroupsApi()
+var apiInstance = new IronTitan.GroupsApi();
 
-var body = new IronTitan.GroupWrapper(); // {GroupWrapper} Group to post.
+var body = new IronTitan.GroupWrapper(); // GroupWrapper | Group to post.
 
 
 var callback = function(error, data, response) {
@@ -119,7 +119,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsPost(body, callback);
+apiInstance.groupsPost(body, callback);
 ```
 
 ### Parameters
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json

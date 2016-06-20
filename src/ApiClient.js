@@ -41,7 +41,6 @@
      */
     this.authentications = {
     };
-
     /**
      * The default HTTP headers to be included for all API calls.
      * @type {Array.<String>}
@@ -459,6 +458,25 @@
           // for unknown type, return the data directly
           return data;
         }
+    }
+  };
+
+  /**
+   * Constructs a new map or array model from REST data.
+   * @param data {Object|Array} The REST data.
+   * @param obj {Object|Array} The target object or array.
+   */
+  exports.constructFromObject = function(data, obj, itemType) {
+    if (Array.isArray(data)) {
+      for (var i = 0; i < data.length; i++) {
+        if (data.hasOwnProperty(i))
+          obj[i] = exports.convertToType(data[i], itemType);
+      }
+    } else {
+      for (var k in data) {
+        if (data.hasOwnProperty(k))
+          result[k] = exports.convertToType(data[k], itemType);
+      }
     }
   };
 

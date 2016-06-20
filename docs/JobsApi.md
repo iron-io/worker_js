@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**groupsNameJobsIdLogGet**](JobsApi.md#groupsNameJobsIdLogGet) | **GET** /groups/{name}/jobs/{id}/log | Get the log of a completed job.
 [**groupsNameJobsIdLogPost**](JobsApi.md#groupsNameJobsIdLogPost) | **POST** /groups/{name}/jobs/{id}/log | Send in a log for storage.
 [**groupsNameJobsIdRetryPost**](JobsApi.md#groupsNameJobsIdRetryPost) | **POST** /groups/{name}/jobs/{id}/retry | Retry a job.
-[**groupsNameJobsIdStartPost**](JobsApi.md#groupsNameJobsIdStartPost) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status = &#39;running&#39;
+[**groupsNameJobsIdStartPost**](JobsApi.md#groupsNameJobsIdStartPost) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
 [**groupsNameJobsIdSuccessPost**](JobsApi.md#groupsNameJobsIdSuccessPost) | **POST** /groups/{name}/jobs/{id}/success | Mark job as succeeded.
 [**groupsNameJobsIdTouchPost**](JobsApi.md#groupsNameJobsIdTouchPost) | **POST** /groups/{name}/jobs/{id}/touch | Extend job timeout.
 [**groupsNameJobsPost**](JobsApi.md#groupsNameJobsPost) | **POST** /groups/{name}/jobs | Enqueue Job
@@ -31,13 +31,13 @@ This will list jobs for a particular group.
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
 var opts = { 
-  'createdAfter': new Date("2013-10-20T19:20:30+01:00"), // {Date} Will return jobs created after this time. In RFC3339 format.
-  'n': 56 // {Integer} Number of jobs to return.
+  'createdAfter': new Date("2013-10-20T19:20:30+01:00"), // Date | Will return jobs created after this time. In RFC3339 format.
+  'n': 56 // Integer | Number of jobs to return.
 };
 
 var callback = function(error, data, response) {
@@ -47,7 +47,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsGet(name, opts, callback);
+apiInstance.groupsNameJobsGet(name, opts, callback);
 ```
 
 ### Parameters
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -77,17 +77,17 @@ No authorization required
 
 Cancel a job.
 
-Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to `client_request`. The job&#39;s completed_at field is set to the current time on the jobserver.
+Cancels a job in delayed, queued or running status. The worker may continue to run a running job. reason is set to &#x60;client_request&#x60;. The job&#39;s completed_at field is set to the current time on the jobserver.
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
 
 var callback = function(error, data, response) {
@@ -97,7 +97,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsIdCancelPost(name, id, callback);
+apiInstance.groupsNameJobsIdCancelPost(name, id, callback);
 ```
 
 ### Parameters
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -126,17 +126,17 @@ No authorization required
 
 Delete the job.
 
-Delete only succeeds if job status is one of `succeeded\n| failed | cancelled`. Cancel a job if it is another state and needs to\nbe deleted.  All information about the job, including the log, is\nirretrievably lost when this is invoked.\n
+Delete only succeeds if job status is one of &#x60;succeeded | failed | cancelled&#x60;. Cancel a job if it is another state and needs to be deleted.  All information about the job, including the log, is irretrievably lost when this is invoked. 
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
 
 var callback = function(error, data, response) {
@@ -146,7 +146,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.groupsNameJobsIdDelete(name, id, callback);
+apiInstance.groupsNameJobsIdDelete(name, id, callback);
 ```
 
 ### Parameters
@@ -164,7 +164,7 @@ null (empty response body)
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -175,19 +175,19 @@ No authorization required
 
 Mark job as failed.
 
-Job is marked as failed if it was in a valid state. Job&#39;s `finished_at` time is initialized.
+Job is marked as failed if it was in a valid state. Job&#39;s &#x60;finished_at&#x60; time is initialized.
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
-var body = new IronTitan.Complete(); // {Complete} 
+var body = new IronTitan.Complete(); // Complete | 
 
 
 var callback = function(error, data, response) {
@@ -197,7 +197,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsIdErrorPost(name, id, body, callback);
+apiInstance.groupsNameJobsIdErrorPost(name, id, body, callback);
 ```
 
 ### Parameters
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -233,11 +233,11 @@ Gets a job by id.
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
 
 var callback = function(error, data, response) {
@@ -247,7 +247,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsIdGet(name, id, callback);
+apiInstance.groupsNameJobsIdGet(name, id, callback);
 ```
 
 ### Parameters
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -282,11 +282,11 @@ Retrieves the log from log storage.
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
 
 var callback = function(error, data, response) {
@@ -296,7 +296,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsIdLogGet(name, id, callback);
+apiInstance.groupsNameJobsIdLogGet(name, id, callback);
 ```
 
 ### Parameters
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: text/plain
@@ -331,13 +331,13 @@ Logs are sent after a job completes since they may be very large and the runner 
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
-var log = "/path/to/file.txt"; // {File} Output log for the job. Content-Type must be \"text/plain; charset=utf-8\".
+var log = "/path/to/file.txt"; // File | Output log for the job. Content-Type must be \"text/plain; charset=utf-8\".
 
 
 var callback = function(error, data, response) {
@@ -347,7 +347,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsIdLogPost(name, id, log, callback);
+apiInstance.groupsNameJobsIdLogPost(name, id, log, callback);
 ```
 
 ### Parameters
@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Name of group for this set of jobs. | 
  **id** | **String**| Job id | 
- **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset=utf-8\&quot;. | 
+ **log** | **File**| Output log for the job. Content-Type must be \&quot;text/plain; charset&#x3D;utf-8\&quot;. | 
 
 ### Return type
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: multipart/form-data
  - **Accept**: application/json
@@ -377,17 +377,17 @@ No authorization required
 
 Retry a job.
 
-\&quot;The /retry endpoint can be used to force a retry of jobs\nwith status succeeded or cancelled. It can also be used to retry jobs\nthat in the failed state, but whose max_retries field is 0. The retried\njob will continue to have max_retries = 0.\&quot;\n
+\&quot;The /retry endpoint can be used to force a retry of jobs with status succeeded or cancelled. It can also be used to retry jobs that in the failed state, but whose max_retries field is 0. The retried job will continue to have max_retries &#x3D; 0.\&quot; 
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
 
 var callback = function(error, data, response) {
@@ -397,7 +397,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsIdRetryPost(name, id, callback);
+apiInstance.groupsNameJobsIdRetryPost(name, id, callback);
 ```
 
 ### Parameters
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -424,21 +424,21 @@ No authorization required
 # **groupsNameJobsIdStartPost**
 > JobWrapper groupsNameJobsIdStartPost(name, id, body)
 
-Mark job as started, ie: status = &#39;running&#39;
+Mark job as started, ie: status &#x3D; &#39;running&#39;
 
-Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s `started_at` time is initialized.
+Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s &#x60;started_at&#x60; time is initialized.
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
-var body = new IronTitan.Start(); // {Start} 
+var body = new IronTitan.Start(); // Start | 
 
 
 var callback = function(error, data, response) {
@@ -448,7 +448,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsIdStartPost(name, id, body, callback);
+apiInstance.groupsNameJobsIdStartPost(name, id, body, callback);
 ```
 
 ### Parameters
@@ -467,7 +467,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -478,19 +478,19 @@ No authorization required
 
 Mark job as succeeded.
 
-Job status is changed to succeeded if it was in a valid state before. Job&#39;s `completed_at` time is initialized.
+Job status is changed to succeeded if it was in a valid state before. Job&#39;s &#x60;completed_at&#x60; time is initialized.
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
-var body = new IronTitan.Complete(); // {Complete} 
+var body = new IronTitan.Complete(); // Complete | 
 
 
 var callback = function(error, data, response) {
@@ -500,7 +500,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsIdSuccessPost(name, id, body, callback);
+apiInstance.groupsNameJobsIdSuccessPost(name, id, body, callback);
 ```
 
 ### Parameters
@@ -519,7 +519,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -530,17 +530,17 @@ No authorization required
 
 Extend job timeout.
 
-Consumers can sometimes take a while to run the task after accepting it.  An example is when the runner does not have the docker image locally, it can spend a significant time downloading the image.\nIf the timeout is small, the job may never get to run, or run but not be accepted by Titan. Consumers can touch the job before it times out. Titan will reset the timeout, giving the consumer another timeout seconds to run the job.\nTouch is only valid while the job is in a running state. If touch fails, the runner may stop running the job.\n
+Consumers can sometimes take a while to run the task after accepting it.  An example is when the runner does not have the docker image locally, it can spend a significant time downloading the image. If the timeout is small, the job may never get to run, or run but not be accepted by Titan. Consumers can touch the job before it times out. Titan will reset the timeout, giving the consumer another timeout seconds to run the job. Touch is only valid while the job is in a running state. If touch fails, the runner may stop running the job. 
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of jobs.
 
-var id = "id_example"; // {String} Job id
+var id = "id_example"; // String | Job id
 
 
 var callback = function(error, data, response) {
@@ -550,7 +550,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully.');
   }
 };
-api.groupsNameJobsIdTouchPost(name, id, callback);
+apiInstance.groupsNameJobsIdTouchPost(name, id, callback);
 ```
 
 ### Parameters
@@ -568,7 +568,7 @@ null (empty response body)
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -579,17 +579,17 @@ No authorization required
 
 Enqueue Job
 
-Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued.\n
+Enqueues job(s). If any of the jobs is invalid, none of the jobs are enqueued. 
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
-var name = "name_example"; // {String} name of the group.
+var name = "name_example"; // String | name of the group.
 
-var body = new IronTitan.NewJobsWrapper(); // {NewJobsWrapper} Array of jobs to post.
+var body = new IronTitan.NewJobsWrapper(); // NewJobsWrapper | Array of jobs to post.
 
 
 var callback = function(error, data, response) {
@@ -599,7 +599,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.groupsNameJobsPost(name, body, callback);
+apiInstance.groupsNameJobsPost(name, body, callback);
 ```
 
 ### Parameters
@@ -617,7 +617,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json
@@ -628,16 +628,16 @@ No authorization required
 
 Get next job.
 
-Gets the next job in the queue, ready for processing. Titan may return &lt;=n jobs. Consumers should start processing jobs in order. Each returned job is set to `status` \&quot;running\&quot; and `started_at` is set to the current time. No other consumer can retrieve this job.
+Gets the next job in the queue, ready for processing. Titan may return &lt;&#x3D;n jobs. Consumers should start processing jobs in order. Each returned job is set to &#x60;status&#x60; \&quot;running\&quot; and &#x60;started_at&#x60; is set to the current time. No other consumer can retrieve this job.
 
 ### Example
 ```javascript
 var IronTitan = require('iron_titan');
 
-var apiInstance = new IronTitan.JobsApi()
+var apiInstance = new IronTitan.JobsApi();
 
 var opts = { 
-  'n': 1 // {Integer} Number of jobs to return.
+  'n': 1 // Integer | Number of jobs to return.
 };
 
 var callback = function(error, data, response) {
@@ -647,7 +647,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.jobsGet(opts, callback);
+apiInstance.jobsGet(opts, callback);
 ```
 
 ### Parameters
@@ -664,7 +664,7 @@ Name | Type | Description  | Notes
 
 No authorization required
 
-### HTTP reuqest headers
+### HTTP request headers
 
  - **Content-Type**: application/json
  - **Accept**: application/json

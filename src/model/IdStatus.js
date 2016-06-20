@@ -1,7 +1,7 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient'], factory);
+    define(['ApiClient'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('../ApiClient'));
@@ -15,6 +15,9 @@
 }(this, function(ApiClient) {
   'use strict';
 
+
+
+
   /**
    * The IdStatus model module.
    * @module model/IdStatus
@@ -27,6 +30,7 @@
    * @class
    */
   var exports = function() {
+    var _this = this;
 
 
 
@@ -40,7 +44,7 @@
    * @return {module:model/IdStatus} The populated <code>IdStatus</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
-    if (data) { 
+    if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('id')) {
@@ -53,15 +57,13 @@
     return obj;
   }
 
-
   /**
    * Unique identifier representing a specific job.
    * @member {String} id
    */
   exports.prototype['id'] = undefined;
-
   /**
-   * States and valid transitions.\n\n                 +---------+\n       +---------> delayed <----------------+\n                 +----+----+                |\n                      |                     |\n                      |                     |\n                 +----v----+                |\n       +---------> queued  <----------------+\n                 +----+----+                *\n                      |                     *\n                      |               retry * creates new job\n                 +----v----+                *\n                 | running |                *\n                 +--+-+-+--+                |\n          +---------|-|-|-----+-------------+\n      +---|---------+ | +-----|---------+   |\n      |   |           |       |         |   |\n+-----v---^-+      +--v-------^+     +--v---^-+\n| success   |      | cancelled |     |  error |\n+-----------+      +-----------+     +--------+\n\n* delayed - has a delay.\n* queued - Ready to be consumed when it's turn comes.\n* running - Currently consumed by a runner which will attempt to process it.\n* success - (or complete? success/error is common javascript terminology)\n* error - Something went wrong. In this case more information can be obtained\n  by inspecting the \"reason\" field.\n  - timeout\n  - killed - forcibly killed by worker due to resource restrictions or access\n    violations.\n  - bad_exit - exited with non-zero status due to program termination/crash.\n* cancelled - cancelled via API. More information in the reason field.\n  - client_request - Request was cancelled by a client.\n
+   * States and valid transitions.                   +---------+        +---------> delayed <----------------+                  +----+----+                |                       |                     |                       |                     |                  +----v----+                |        +---------> queued  <----------------+                  +----+----+                *                       |                     *                       |               retry * creates new job                  +----v----+                *                  | running |                *                  +--+-+-+--+                |           +---------|-|-|-----+-------------+       +---|---------+ | +-----|---------+   |       |   |           |       |         |   | +-----v---^-+      +--v-------^+     +--v---^-+ | success   |      | cancelled |     |  error | +-----------+      +-----------+     +--------+  * delayed - has a delay. * queued - Ready to be consumed when it's turn comes. * running - Currently consumed by a runner which will attempt to process it. * success - (or complete? success/error is common javascript terminology) * error - Something went wrong. In this case more information can be obtained   by inspecting the \"reason\" field.   - timeout   - killed - forcibly killed by worker due to resource restrictions or access     violations.   - bad_exit - exited with non-zero status due to program termination/crash. * cancelled - cancelled via API. More information in the reason field.   - client_request - Request was cancelled by a client. 
    * @member {module:model/IdStatus.StatusEnum} status
    */
   exports.prototype['status'] = undefined;
@@ -72,43 +74,40 @@
    * @enum {String}
    * @readonly
    */
-  exports.StatusEnum = { 
+  exports.StatusEnum = {
     /**
-     * value: delayed
+     * value: "delayed"
      * @const
      */
-    DELAYED: "delayed",
-    
+    "delayed": "delayed",
     /**
-     * value: queued
+     * value: "queued"
      * @const
      */
-    QUEUED: "queued",
-    
+    "queued": "queued",
     /**
-     * value: running
+     * value: "running"
      * @const
      */
-    RUNNING: "running",
-    
+    "running": "running",
     /**
-     * value: success
+     * value: "success"
      * @const
      */
-    SUCCESS: "success",
-    
+    "success": "success",
     /**
-     * value: error
+     * value: "error"
      * @const
      */
-    ERROR: "error",
-    
+    "error": "error",
     /**
-     * value: cancelled
+     * value: "cancelled"
      * @const
      */
-    CANCELLED: "cancelled"
-  };
+    "cancelled": "cancelled"  };
+
 
   return exports;
 }));
+
+

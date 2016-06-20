@@ -1,7 +1,7 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', '../model/Complete', '../model/Error', '../model/JobWrapper', '../model/IdStatus', '../model/Start'], factory);
+    define(['ApiClient', 'model/Complete', 'model/Error', 'model/JobWrapper', 'model/IdStatus', 'model/Start'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('../ApiClient'), require('../model/Complete'), require('../model/Error'), require('../model/JobWrapper'), require('../model/IdStatus'), require('../model/Start'));
@@ -25,8 +25,8 @@
    * Constructs a new RunnerApi. 
    * @alias module:api/RunnerApi
    * @class
-   * @param {module:ApiClient} apiClient Optional API client implementation to use, default to {@link module:ApiClient#instance}
-   * if unspecified.
+   * @param {module:ApiClient} apiClient Optional API client implementation to use,
+   * default to {@link module:ApiClient#instance} if unspecified.
    */
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
@@ -42,7 +42,7 @@
 
     /**
      * Mark job as failed.
-     * Job is marked as failed if it was in a valid state. Job&#39;s `finished_at` time is initialized.
+     * Job is marked as failed if it was in a valid state. Job&#39;s &#x60;finished_at&#x60; time is initialized.
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Complete} body 
@@ -100,8 +100,8 @@
      */
 
     /**
-     * Mark job as started, ie: status = &#39;running&#39;
-     * Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s `started_at` time is initialized.
+     * Mark job as started, ie: status &#x3D; &#39;running&#39;
+     * Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s &#x60;started_at&#x60; time is initialized.
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Start} body 
@@ -160,7 +160,7 @@
 
     /**
      * Mark job as succeeded.
-     * Job status is changed to succeeded if it was in a valid state before. Job&#39;s `completed_at` time is initialized.
+     * Job status is changed to succeeded if it was in a valid state before. Job&#39;s &#x60;completed_at&#x60; time is initialized.
      * @param {String} name Name of group for this set of jobs.
      * @param {String} id Job id
      * @param {module:model/Complete} body 

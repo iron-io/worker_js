@@ -1,7 +1,7 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['../ApiClient', './NewJob'], factory);
+    define(['ApiClient', 'model/NewJob'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
     module.exports = factory(require('../ApiClient'), require('./NewJob'));
@@ -14,6 +14,9 @@
   }
 }(this, function(ApiClient, NewJob) {
   'use strict';
+
+
+
 
   /**
    * The NewJobsWrapper model module.
@@ -28,8 +31,9 @@
    * @param jobs
    */
   var exports = function(jobs) {
+    var _this = this;
 
-    this['jobs'] = jobs;
+    _this['jobs'] = jobs;
   };
 
   /**
@@ -40,7 +44,7 @@
    * @return {module:model/NewJobsWrapper} The populated <code>NewJobsWrapper</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
-    if (data) { 
+    if (data) {
       obj = obj || new exports();
 
       if (data.hasOwnProperty('jobs')) {
@@ -49,7 +53,6 @@
     }
     return obj;
   }
-
 
   /**
    * @member {Array.<module:model/NewJob>} jobs
@@ -61,3 +64,5 @@
 
   return exports;
 }));
+
+
