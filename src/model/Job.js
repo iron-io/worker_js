@@ -21,7 +21,7 @@
   /**
    * The Job model module.
    * @module model/Job
-   * @version 0.4.2
+   * @version 0.4.3
    */
 
   /**
