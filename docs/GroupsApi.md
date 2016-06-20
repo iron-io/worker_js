@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**groupsGet**](GroupsApi.md#groupsGet) | **GET** /groups | Get all group names.
 [**groupsNameGet**](GroupsApi.md#groupsNameGet) | **GET** /groups/{name} | Get information for a group.
+[**groupsNamePut**](GroupsApi.md#groupsNamePut) | **PUT** /groups/{name} | Create/update a job group.
 [**groupsPost**](GroupsApi.md#groupsPost) | **POST** /groups | Post new group
 
 
@@ -81,6 +82,52 @@ apiInstance.groupsNameGet(name, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| name of the group. | 
+
+### Return type
+
+[**GroupWrapper**](GroupWrapper.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="groupsNamePut"></a>
+# **groupsNamePut**
+> GroupWrapper groupsNamePut(body)
+
+Create/update a job group.
+
+You can set group level settings here. 
+
+### Example
+```javascript
+var IronTitan = require('iron_titan');
+
+var apiInstance = new IronTitan.GroupsApi();
+
+var body = new IronTitan.GroupWrapper(); // GroupWrapper | Group to post.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.groupsNamePut(body, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**GroupWrapper**](GroupWrapper.md)| Group to post. | 
 
 ### Return type
 
