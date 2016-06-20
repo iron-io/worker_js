@@ -21,7 +21,7 @@
   /**
    * The JobWrapper model module.
    * @module model/JobWrapper
-   * @version 0.4.0
+   * @version 0.4.1
    */
 
   /**

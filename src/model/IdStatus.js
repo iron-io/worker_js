@@ -21,7 +21,7 @@
   /**
    * The IdStatus model module.
    * @module model/IdStatus
-   * @version 0.4.0
+   * @version 0.4.1
    */
 
   /**

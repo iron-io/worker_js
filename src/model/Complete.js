@@ -21,7 +21,7 @@
   /**
    * The Complete model module.
    * @module model/Complete
-   * @version 0.4.0
+   * @version 0.4.1
    */
 
   /**
