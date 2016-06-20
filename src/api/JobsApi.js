@@ -18,7 +18,7 @@
   /**
    * Jobs service.
    * @module api/JobsApi
-   * @version 0.4.4
+   * @version 0.4.6
    */
 
   /**

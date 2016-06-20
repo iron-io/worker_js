@@ -21,7 +21,7 @@
   /**
    * The GroupsWrapper model module.
    * @module model/GroupsWrapper
-   * @version 0.4.4
+   * @version 0.4.6
    */
 
   /**

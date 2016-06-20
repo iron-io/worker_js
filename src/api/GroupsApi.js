@@ -18,7 +18,7 @@
   /**
    * Groups service.
    * @module api/GroupsApi
-   * @version 0.4.4
+   * @version 0.4.6
    */
 
   /**
@@ -128,12 +128,18 @@
     /**
      * Create/update a job group.
      * You can set group level settings here. 
+     * @param {String} name name of the group.
      * @param {module:model/GroupWrapper} body Group to post.
      * @param {module:api/GroupsApi~groupsNamePutCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/GroupWrapper}
      */
-    this.groupsNamePut = function(body, callback) {
+    this.groupsNamePut = function(name, body, callback) {
       var postBody = body;
+
+      // verify the required parameter 'name' is set
+      if (name == undefined || name == null) {
+        throw "Missing the required parameter 'name' when calling groupsNamePut";
+      }
 
       // verify the required parameter 'body' is set
       if (body == undefined || body == null) {
@@ -142,6 +148,7 @@
 
 
       var pathParams = {
+        'name': name
       };
       var queryParams = {
       };

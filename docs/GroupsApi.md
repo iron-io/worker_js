@@ -98,7 +98,7 @@ No authorization required
 
 <a name="groupsNamePut"></a>
 # **groupsNamePut**
-> GroupWrapper groupsNamePut(body)
+> GroupWrapper groupsNamePut(name, body)
 
 Create/update a job group.
 
@@ -110,6 +110,8 @@ var IronTitan = require('iron_titan');
 
 var apiInstance = new IronTitan.GroupsApi();
 
+var name = "name_example"; // String | name of the group.
+
 var body = new IronTitan.GroupWrapper(); // GroupWrapper | Group to post.
 
 
@@ -120,13 +122,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.groupsNamePut(body, callback);
+apiInstance.groupsNamePut(name, body, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **name** | **String**| name of the group. | 
  **body** | [**GroupWrapper**](GroupWrapper.md)| Group to post. | 
 
 ### Return type
