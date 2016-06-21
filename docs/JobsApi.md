@@ -37,7 +37,8 @@ var name = "name_example"; // String | Name of group for this set of jobs.
 
 var opts = { 
   'createdAfter': new Date("2013-10-20T19:20:30+01:00"), // Date | Will return jobs created after this time. In RFC3339 format.
-  'n': 56 // Integer | Number of jobs to return.
+  'n': 56, // Integer | Number of jobs to return per page. Default is 50. Max is 1000.
+  'cursor': "cursor_example" // String | Pass this in from a previous query to paginate results.
 };
 
 var callback = function(error, data, response) {
@@ -56,7 +57,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String**| Name of group for this set of jobs. | 
  **createdAfter** | **Date**| Will return jobs created after this time. In RFC3339 format. | [optional] 
- **n** | **Integer**| Number of jobs to return. | [optional] 
+ **n** | **Integer**| Number of jobs to return per page. Default is 50. Max is 1000. | [optional] 
+ **cursor** | **String**| Pass this in from a previous query to paginate results. | [optional] 
 
 ### Return type
 

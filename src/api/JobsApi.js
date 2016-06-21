@@ -18,7 +18,7 @@
   /**
    * Jobs service.
    * @module api/JobsApi
-   * @version 0.4.6
+   * @version 0.4.9
    */
 
   /**
@@ -46,7 +46,8 @@
      * @param {String} name Name of group for this set of jobs.
      * @param {Object} opts Optional parameters
      * @param {Date} opts.createdAfter Will return jobs created after this time. In RFC3339 format.
-     * @param {Integer} opts.n Number of jobs to return.
+     * @param {Integer} opts.n Number of jobs to return per page. Default is 50. Max is 1000.
+     * @param {String} opts.cursor Pass this in from a previous query to paginate results.
      * @param {module:api/JobsApi~groupsNameJobsGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {module:model/JobsWrapper}
      */
@@ -65,7 +66,8 @@
       };
       var queryParams = {
         'created_after': opts['createdAfter'],
-        'n': opts['n']
+        'n': opts['n'],
+        'cursor': opts['cursor']
       };
       var headerParams = {
       };

@@ -21,7 +21,7 @@
   /**
    * The JobsWrapper model module.
    * @module model/JobsWrapper
-   * @version 0.4.6
+   * @version 0.4.9
    */
 
   /**
@@ -34,6 +34,7 @@
     var _this = this;
 
     _this['jobs'] = jobs;
+
 
   };
 
@@ -51,6 +52,9 @@
       if (data.hasOwnProperty('jobs')) {
         obj['jobs'] = ApiClient.convertToType(data['jobs'], [Job]);
       }
+      if (data.hasOwnProperty('cursor')) {
+        obj['cursor'] = ApiClient.convertToType(data['cursor'], 'String');
+      }
       if (data.hasOwnProperty('error')) {
         obj['error'] = ErrorBody.constructFromObject(data['error']);
       }
@@ -62,6 +66,11 @@
    * @member {Array.<module:model/Job>} jobs
    */
   exports.prototype['jobs'] = undefined;
+  /**
+   * Used to paginate results. If this is returned, pass it into the same query again to get more results.
+   * @member {String} cursor
+   */
+  exports.prototype['cursor'] = undefined;
   /**
    * @member {module:model/ErrorBody} error
    */
