@@ -1,4 +1,4 @@
-# IronTitan.ErrorBody
+# IronJs.ErrorBody
 
 ## Properties
 Name | Type | Description | Notes

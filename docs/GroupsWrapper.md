@@ -1,4 +1,4 @@
-# IronTitan.GroupsWrapper
+# IronJs.GroupsWrapper
 
 ## Properties
 Name | Type | Description | Notes

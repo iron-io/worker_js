@@ -1,33 +1,33 @@
-# IronTitan.RunnerApi
+# IronJs.RunnerApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**groupsNameJobsIdErrorPost**](RunnerApi.md#groupsNameJobsIdErrorPost) | **POST** /groups/{name}/jobs/{id}/error | Mark job as failed.
-[**groupsNameJobsIdStartPost**](RunnerApi.md#groupsNameJobsIdStartPost) | **POST** /groups/{name}/jobs/{id}/start | Mark job as started, ie: status &#x3D; &#39;running&#39;
-[**groupsNameJobsIdSuccessPost**](RunnerApi.md#groupsNameJobsIdSuccessPost) | **POST** /groups/{name}/jobs/{id}/success | Mark job as succeeded.
+[**groupsNameTasksIdErrorPost**](RunnerApi.md#groupsNameTasksIdErrorPost) | **POST** /groups/{name}/tasks/{id}/error | Mark task as failed.
+[**groupsNameTasksIdStartPost**](RunnerApi.md#groupsNameTasksIdStartPost) | **POST** /groups/{name}/tasks/{id}/start | Mark task as started, ie: status &#x3D; &#39;running&#39;
+[**groupsNameTasksIdSuccessPost**](RunnerApi.md#groupsNameTasksIdSuccessPost) | **POST** /groups/{name}/tasks/{id}/success | Mark task as succeeded.
 
 
-<a name="groupsNameJobsIdErrorPost"></a>
-# **groupsNameJobsIdErrorPost**
-> JobWrapper groupsNameJobsIdErrorPost(name, id, body)
+<a name="groupsNameTasksIdErrorPost"></a>
+# **groupsNameTasksIdErrorPost**
+> TaskWrapper groupsNameTasksIdErrorPost(name, id, body)
 
-Mark job as failed.
+Mark task as failed.
 
-Job is marked as failed if it was in a valid state. Job&#39;s &#x60;finished_at&#x60; time is initialized.
+Task is marked as failed if it was in a valid state. Task&#39;s &#x60;finished_at&#x60; time is initialized.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var IronJs = require('iron_js');
 
-var apiInstance = new IronTitan.RunnerApi();
+var apiInstance = new IronJs.RunnerApi();
 
-var name = "name_example"; // String | Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of tasks.
 
-var id = "id_example"; // String | Job id
+var id = "id_example"; // String | Task id
 
-var body = new IronTitan.Complete(); // Complete | 
+var body = new IronJs.Complete(); // Complete | 
 
 
 var callback = function(error, data, response) {
@@ -37,20 +37,20 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.groupsNameJobsIdErrorPost(name, id, body, callback);
+apiInstance.groupsNameTasksIdErrorPost(name, id, body, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of group for this set of jobs. | 
- **id** | **String**| Job id | 
+ **name** | **String**| Name of group for this set of tasks. | 
+ **id** | **String**| Task id | 
  **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
-[**JobWrapper**](JobWrapper.md)
+[**TaskWrapper**](TaskWrapper.md)
 
 ### Authorization
 
@@ -61,25 +61,25 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="groupsNameJobsIdStartPost"></a>
-# **groupsNameJobsIdStartPost**
-> JobWrapper groupsNameJobsIdStartPost(name, id, body)
+<a name="groupsNameTasksIdStartPost"></a>
+# **groupsNameTasksIdStartPost**
+> TaskWrapper groupsNameTasksIdStartPost(name, id, body)
 
-Mark job as started, ie: status &#x3D; &#39;running&#39;
+Mark task as started, ie: status &#x3D; &#39;running&#39;
 
-Job status is changed to &#39;running&#39; if it was in a valid state before. Job&#39;s &#x60;started_at&#x60; time is initialized.
+Task status is changed to &#39;running&#39; if it was in a valid state before. Task&#39;s &#x60;started_at&#x60; time is initialized.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var IronJs = require('iron_js');
 
-var apiInstance = new IronTitan.RunnerApi();
+var apiInstance = new IronJs.RunnerApi();
 
-var name = "name_example"; // String | Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of tasks.
 
-var id = "id_example"; // String | Job id
+var id = "id_example"; // String | Task id
 
-var body = new IronTitan.Start(); // Start | 
+var body = new IronJs.Start(); // Start | 
 
 
 var callback = function(error, data, response) {
@@ -89,20 +89,20 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.groupsNameJobsIdStartPost(name, id, body, callback);
+apiInstance.groupsNameTasksIdStartPost(name, id, body, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of group for this set of jobs. | 
- **id** | **String**| Job id | 
+ **name** | **String**| Name of group for this set of tasks. | 
+ **id** | **String**| Task id | 
  **body** | [**Start**](Start.md)|  | 
 
 ### Return type
 
-[**JobWrapper**](JobWrapper.md)
+[**TaskWrapper**](TaskWrapper.md)
 
 ### Authorization
 
@@ -113,25 +113,25 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="groupsNameJobsIdSuccessPost"></a>
-# **groupsNameJobsIdSuccessPost**
-> JobWrapper groupsNameJobsIdSuccessPost(name, id, body)
+<a name="groupsNameTasksIdSuccessPost"></a>
+# **groupsNameTasksIdSuccessPost**
+> TaskWrapper groupsNameTasksIdSuccessPost(name, id, body)
 
-Mark job as succeeded.
+Mark task as succeeded.
 
-Job status is changed to succeeded if it was in a valid state before. Job&#39;s &#x60;completed_at&#x60; time is initialized.
+Task status is changed to succeeded if it was in a valid state before. Task&#39;s &#x60;completed_at&#x60; time is initialized.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var IronJs = require('iron_js');
 
-var apiInstance = new IronTitan.RunnerApi();
+var apiInstance = new IronJs.RunnerApi();
 
-var name = "name_example"; // String | Name of group for this set of jobs.
+var name = "name_example"; // String | Name of group for this set of tasks.
 
-var id = "id_example"; // String | Job id
+var id = "id_example"; // String | Task id
 
-var body = new IronTitan.Complete(); // Complete | 
+var body = new IronJs.Complete(); // Complete | 
 
 
 var callback = function(error, data, response) {
@@ -141,20 +141,20 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.groupsNameJobsIdSuccessPost(name, id, body, callback);
+apiInstance.groupsNameTasksIdSuccessPost(name, id, body, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **String**| Name of group for this set of jobs. | 
- **id** | **String**| Job id | 
+ **name** | **String**| Name of group for this set of tasks. | 
+ **id** | **String**| Task id | 
  **body** | [**Complete**](Complete.md)|  | 
 
 ### Return type
 
-[**JobWrapper**](JobWrapper.md)
+[**TaskWrapper**](TaskWrapper.md)
 
 ### Authorization
 

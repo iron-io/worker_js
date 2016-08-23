@@ -1,7 +1,7 @@
 {
-  "name": "iron_titan",
-  "version": "0.4.9",
-  "description": "The ultimate, language agnostic, container based job processing framework.",
+  "name": "iron_js",
+  "version": "0.5.0",
+  "description": "The_ultimate_language_agnostic_container_based_task_processing_framework_",
   "license": "Apache-2.0",
   "main": "src/index.js",
   "scripts": {

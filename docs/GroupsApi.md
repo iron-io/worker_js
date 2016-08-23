@@ -1,4 +1,4 @@
-# IronTitan.GroupsApi
+# IronJs.GroupsApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**groupsGet**](GroupsApi.md#groupsGet) | **GET** /groups | Get all group names.
 [**groupsNameGet**](GroupsApi.md#groupsNameGet) | **GET** /groups/{name} | Get information for a group.
-[**groupsNamePut**](GroupsApi.md#groupsNamePut) | **PUT** /groups/{name} | Create/update a job group.
+[**groupsNamePut**](GroupsApi.md#groupsNamePut) | **PUT** /groups/{name} | Create/update a task group.
 [**groupsPost**](GroupsApi.md#groupsPost) | **POST** /groups | Post new group
 
 
@@ -20,9 +20,9 @@ Get a list of all the groups in the system.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var IronJs = require('iron_js');
 
-var apiInstance = new IronTitan.GroupsApi();
+var apiInstance = new IronJs.GroupsApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -56,13 +56,13 @@ No authorization required
 
 Get information for a group.
 
-This gives more details about a job group, such as statistics.
+This gives more details about a task group, such as statistics.
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var IronJs = require('iron_js');
 
-var apiInstance = new IronTitan.GroupsApi();
+var apiInstance = new IronJs.GroupsApi();
 
 var name = "name_example"; // String | name of the group.
 
@@ -100,19 +100,19 @@ No authorization required
 # **groupsNamePut**
 > GroupWrapper groupsNamePut(name, body)
 
-Create/update a job group.
+Create/update a task group.
 
 You can set group level settings here. 
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var IronJs = require('iron_js');
 
-var apiInstance = new IronTitan.GroupsApi();
+var apiInstance = new IronJs.GroupsApi();
 
 var name = "name_example"; // String | name of the group.
 
-var body = new IronTitan.GroupWrapper(); // GroupWrapper | Group to post.
+var body = new IronJs.GroupWrapper(); // GroupWrapper | Group to post.
 
 
 var callback = function(error, data, response) {
@@ -151,15 +151,15 @@ No authorization required
 
 Post new group
 
-Insert a new job group
+Insert a new task group
 
 ### Example
 ```javascript
-var IronTitan = require('iron_titan');
+var IronJs = require('iron_js');
 
-var apiInstance = new IronTitan.GroupsApi();
+var apiInstance = new IronJs.GroupsApi();
 
-var body = new IronTitan.GroupWrapper(); // GroupWrapper | Group to post.
+var body = new IronJs.GroupWrapper(); // GroupWrapper | Group to post.
 
 
 var callback = function(error, data, response) {

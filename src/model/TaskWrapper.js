@@ -25,81 +25,63 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient'], factory);
+    define(['ApiClient', 'model/Task'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'));
+    module.exports = factory(require('../ApiClient'), require('./Task'));
   } else {
     // Browser globals (root is window)
     if (!root.IronJs) {
       root.IronJs = {};
     }
-    root.IronJs.Complete = factory(root.IronJs.ApiClient);
+    root.IronJs.TaskWrapper = factory(root.IronJs.ApiClient, root.IronJs.Task);
   }
-}(this, function(ApiClient) {
+}(this, function(ApiClient, Task) {
   'use strict';
 
 
 
 
   /**
-   * The Complete model module.
-   * @module model/Complete
+   * The TaskWrapper model module.
+   * @module model/TaskWrapper
    * @version 0.5.0
    */
 
   /**
-   * Constructs a new <code>Complete</code>.
-   * @alias module:model/Complete
+   * Constructs a new <code>TaskWrapper</code>.
+   * @alias module:model/TaskWrapper
    * @class
+   * @param task {module:model/Task} 
    */
-  var exports = function() {
+  var exports = function(task) {
     var _this = this;
 
-
-
-
+    _this['task'] = task;
   };
 
   /**
-   * Constructs a <code>Complete</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>TaskWrapper</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Complete} obj Optional instance to populate.
-   * @return {module:model/Complete} The populated <code>Complete</code> instance.
+   * @param {module:model/TaskWrapper} obj Optional instance to populate.
+   * @return {module:model/TaskWrapper} The populated <code>TaskWrapper</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
 
-      if (data.hasOwnProperty('completed_at')) {
-        obj['completed_at'] = ApiClient.convertToType(data['completed_at'], 'Date');
-      }
-      if (data.hasOwnProperty('reason')) {
-        obj['reason'] = ApiClient.convertToType(data['reason'], 'String');
-      }
-      if (data.hasOwnProperty('error')) {
-        obj['error'] = ApiClient.convertToType(data['error'], 'String');
+      if (data.hasOwnProperty('task')) {
+        obj['task'] = Task.constructFromObject(data['task']);
       }
     }
     return obj;
   }
 
   /**
-   * Time when task was completed. Always in UTC.
-   * @member {Date} completed_at
+   * @member {module:model/Task} task
    */
-  exports.prototype['completed_at'] = undefined;
-  /**
-   * Machine readable reason failure, if status=error. Only used by the /error endpoint.
-   * @member {String} reason
-   */
-  exports.prototype['reason'] = undefined;
-  /**
-   * Error message, if status=error. Only used by the /error endpoint.
-   * @member {String} error
-   */
-  exports.prototype['error'] = undefined;
+  exports.prototype['task'] = undefined;
 
 
 

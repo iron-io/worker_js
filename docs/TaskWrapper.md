@@ -1,8 +1,8 @@
-# IronJs.GroupWrapper
+# IronJs.TaskWrapper
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**group** | [**Group**](Group.md) |  | 
+**task** | [**Task**](Task.md) |  | 
 
 

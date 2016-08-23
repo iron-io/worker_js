@@ -1,4 +1,4 @@
-# IronTitan.Error
+# IronJs.Error
 
 ## Properties
 Name | Type | Description | Notes
