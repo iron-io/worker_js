@@ -1,4 +1,4 @@
-# IronJs.Complete
+# WorkerJs.Complete
 
 ## Properties
 Name | Type | Description | Notes

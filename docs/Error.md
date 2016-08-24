@@ -1,4 +1,4 @@
-# IronJs.Error
+# WorkerJs.Error
 
 ## Properties
 Name | Type | Description | Notes

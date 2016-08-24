@@ -1,4 +1,4 @@
-# IronJs.TasksApi
+# WorkerJs.TasksApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -29,9 +29,9 @@ This will list tasks for a particular group.
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
@@ -83,9 +83,9 @@ Cancels a task in delayed, queued or running status. The worker may continue to 
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
@@ -132,9 +132,9 @@ Delete only succeeds if task status is one of &#x60;succeeded | failed | cancell
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
@@ -181,15 +181,15 @@ Task is marked as failed if it was in a valid state. Task&#39;s &#x60;finished_a
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
 var id = "id_example"; // String | Task id
 
-var body = new IronJs.Complete(); // Complete | 
+var body = new WorkerJs.Complete(); // Complete | 
 
 
 var callback = function(error, data, response) {
@@ -233,9 +233,9 @@ Gets a task by id.
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
@@ -282,9 +282,9 @@ Retrieves the log from log storage.
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
@@ -331,9 +331,9 @@ Logs are sent after a task completes since they may be very large and the runner
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
@@ -383,9 +383,9 @@ Retry a task.
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
@@ -432,15 +432,15 @@ Task status is changed to &#39;running&#39; if it was in a valid state before. T
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
 var id = "id_example"; // String | Task id
 
-var body = new IronJs.Start(); // Start | 
+var body = new WorkerJs.Start(); // Start | 
 
 
 var callback = function(error, data, response) {
@@ -484,15 +484,15 @@ Task status is changed to succeeded if it was in a valid state before. Task&#39;
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
 var id = "id_example"; // String | Task id
 
-var body = new IronJs.Complete(); // Complete | 
+var body = new WorkerJs.Complete(); // Complete | 
 
 
 var callback = function(error, data, response) {
@@ -536,9 +536,9 @@ Consumers can sometimes take a while to run the task after accepting it.  An exa
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
@@ -585,13 +585,13 @@ Enqueues task(s). If any of the tasks is invalid, none of the tasks are enqueued
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var name = "name_example"; // String | name of the group.
 
-var body = new IronJs.NewTasksWrapper(); // NewTasksWrapper | Array of tasks to post.
+var body = new WorkerJs.NewTasksWrapper(); // NewTasksWrapper | Array of tasks to post.
 
 
 var callback = function(error, data, response) {
@@ -634,9 +634,9 @@ Gets the next task in the queue, ready for processing. Titan may return &lt;&#x3
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.TasksApi();
+var apiInstance = new WorkerJs.TasksApi();
 
 var opts = { 
   'n': 1 // Integer | Number of tasks to return.

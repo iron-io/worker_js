@@ -1,4 +1,4 @@
-# IronJs.NewTask
+# WorkerJs.NewTask
 
 ## Properties
 Name | Type | Description | Notes

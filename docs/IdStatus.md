@@ -1,4 +1,4 @@
-# IronJs.IdStatus
+# WorkerJs.IdStatus
 
 ## Properties
 Name | Type | Description | Notes

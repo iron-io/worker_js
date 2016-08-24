@@ -1,4 +1,4 @@
-# IronJs.GroupsApi
+# WorkerJs.GroupsApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -20,9 +20,9 @@ Get a list of all the groups in the system.
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.GroupsApi();
+var apiInstance = new WorkerJs.GroupsApi();
 
 var callback = function(error, data, response) {
   if (error) {
@@ -60,9 +60,9 @@ This gives more details about a task group, such as statistics.
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.GroupsApi();
+var apiInstance = new WorkerJs.GroupsApi();
 
 var name = "name_example"; // String | name of the group.
 
@@ -106,13 +106,13 @@ You can set group level settings here.
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.GroupsApi();
+var apiInstance = new WorkerJs.GroupsApi();
 
 var name = "name_example"; // String | name of the group.
 
-var body = new IronJs.GroupWrapper(); // GroupWrapper | Group to post.
+var body = new WorkerJs.GroupWrapper(); // GroupWrapper | Group to post.
 
 
 var callback = function(error, data, response) {
@@ -155,11 +155,11 @@ Insert a new task group
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.GroupsApi();
+var apiInstance = new WorkerJs.GroupsApi();
 
-var body = new IronJs.GroupWrapper(); // GroupWrapper | Group to post.
+var body = new WorkerJs.GroupWrapper(); // GroupWrapper | Group to post.
 
 
 var callback = function(error, data, response) {

@@ -1,4 +1,4 @@
-# IronJs.RunnerApi
+# WorkerJs.RunnerApi
 
 All URIs are relative to *https://localhost:8080/v1*
 
@@ -19,15 +19,15 @@ Task is marked as failed if it was in a valid state. Task&#39;s &#x60;finished_a
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.RunnerApi();
+var apiInstance = new WorkerJs.RunnerApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
 var id = "id_example"; // String | Task id
 
-var body = new IronJs.Complete(); // Complete | 
+var body = new WorkerJs.Complete(); // Complete | 
 
 
 var callback = function(error, data, response) {
@@ -71,15 +71,15 @@ Task status is changed to &#39;running&#39; if it was in a valid state before. T
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.RunnerApi();
+var apiInstance = new WorkerJs.RunnerApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
 var id = "id_example"; // String | Task id
 
-var body = new IronJs.Start(); // Start | 
+var body = new WorkerJs.Start(); // Start | 
 
 
 var callback = function(error, data, response) {
@@ -123,15 +123,15 @@ Task status is changed to succeeded if it was in a valid state before. Task&#39;
 
 ### Example
 ```javascript
-var IronJs = require('iron_js');
+var WorkerJs = require('worker_js');
 
-var apiInstance = new IronJs.RunnerApi();
+var apiInstance = new WorkerJs.RunnerApi();
 
 var name = "name_example"; // String | Name of group for this set of tasks.
 
 var id = "id_example"; // String | Task id
 
-var body = new IronJs.Complete(); // Complete | 
+var body = new WorkerJs.Complete(); // Complete | 
 
 
 var callback = function(error, data, response) {

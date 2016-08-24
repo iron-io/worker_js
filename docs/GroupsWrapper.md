@@ -1,4 +1,4 @@
-# IronJs.GroupsWrapper
+# WorkerJs.GroupsWrapper
 
 ## Properties
 Name | Type | Description | Notes

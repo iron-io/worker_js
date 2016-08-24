@@ -1,4 +1,4 @@
-# IronJs.Group
+# WorkerJs.Group
 
 ## Properties
 Name | Type | Description | Notes

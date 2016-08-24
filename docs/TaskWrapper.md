@@ -1,4 +1,4 @@
-# IronJs.TaskWrapper
+# WorkerJs.TaskWrapper
 
 ## Properties
 Name | Type | Description | Notes

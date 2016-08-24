@@ -1,4 +1,4 @@
-# IronJs.ErrorBody
+# WorkerJs.ErrorBody
 
 ## Properties
 Name | Type | Description | Notes
