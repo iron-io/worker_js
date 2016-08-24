@@ -1,6 +1,6 @@
 {
   "name": "worker_js",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "The_ultimate_language_agnostic_container_based_task_processing_framework_",
   "license": "Apache-2.0",
   "main": "src/index.js",
